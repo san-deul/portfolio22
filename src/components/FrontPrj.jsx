@@ -61,33 +61,41 @@ export default function FrontPrj() {
             </CardInner>
           </CustomCard>
 
-          <Card>
-            <CardInner>
-              <CardImage>
-                <img src={img2} alt="프로젝트1" />
-              </CardImage>
-              <CardText>
-                <p>호텔 프로젝트</p>
-                <p>React / supabase / Tailwind CSS / Zustand /React Query </p>
-                <p>현재 작업 진행중인 프로젝트입니다.</p>
-              </CardText>
-              <Buttons>
-                <Button
-                  href="https://my-hotel-app-beige.vercel.app/"
-                  target="_blank"
-                >
-                  보러가기
-                </Button>
+          
+            <CustomCard
+              onMouseEnter={() => handleHover(img2)}
+              onMouseLeave={handleLeave}
+            >
 
-                <Button
-                  href="https://github.com/san-deul/my-hotel-app"
-                  target="_blank"
-                >
-                  GitHub
-                </Button>
-              </Buttons>
-            </CardInner>
-          </Card>
+              <CardInner>
+                <CardImage>
+                  <img src={img2} alt="프로젝트1" />
+                </CardImage>
+                <CardText>
+                  <p>호텔 프로젝트</p>
+                  <p>React / supabase / Tailwind CSS / Zustand /React Query </p>
+                  <p>현재 작업 진행중인 프로젝트입니다.</p>
+                </CardText>
+                <Buttons>
+                  <Button
+                    href="https://my-hotel-app-beige.vercel.app/"
+                    target="_blank"
+                  >
+                    보러가기
+                  </Button>
+
+                  <Button
+                    href="https://github.com/san-deul/my-hotel-app"
+                    target="_blank"
+                  >
+                    GitHub
+                  </Button>
+                </Buttons>
+              </CardInner>
+
+
+            </CustomCard>
+          
         </Cards>
       </SectionIn>
     </Section>
