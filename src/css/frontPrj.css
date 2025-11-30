@@ -1,0 +1,98 @@
+.front-bg {
+  width: 100%;
+  height: 100vh;
+  /*background: var(--clr-bg);*/
+  backdrop-filter: blur(6px);
+  transition: 0.6s ease;
+  
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+}
+
+
+.front-bg-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  /*filter: blur(20px) brightness(0.4);*/
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  z-index: 0;
+}
+
+
+.front-bg-image.visible {
+  opacity: 1;
+}
+
+/* ✨ 앞쪽 유리판 영역 */
+.front-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(6px);
+  z-index: 1;
+
+
+}
+
+
+.front{
+  background: linear-gradient(to right, #facc15, #f97316); /* from-yellow-400 to-orange-500 */
+}
+
+.cards{
+  
+  display: flex;
+  justify-content: space-around
+}
+
+.card {
+  width: 520px;
+  height: 480px;
+  border-radius: 20px;
+  background: var(--clr-card);
+  border: 1px solid var(--clr-border);
+  box-shadow: 0 8px 32px var(--clr-glow);
+  backdrop-filter: blur(20px);
+  transition: all 0.4s ease;
+  color: var(--clr-text);
+  padding: 32px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  z-index:3;
+
+}
+
+.card:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 0 25px var(--clr-glow);
+}
+
+.card_in{width:100%;background:blue;}
+.card_in .img{width:100%;}
+.card_in .img img{width:100%;}
+
+.card_in .txt{}
+
+
+.card h3 {
+  font-size: 1.6rem;
+  font-weight: bold;
+  margin-bottom: 12px;
+  background: linear-gradient(90deg, #a855f7, #3b82f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.card p {
+  color: var(--clr-muted);
+}

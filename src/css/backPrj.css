@@ -1,0 +1,60 @@
+.backprj {
+  display: flex;
+  height: 95%;
+  background: var(--clr-bg);
+  color: var(--clr-text);
+  transition: 0.4s ease;
+  gap:5%;
+}
+.backtitle{background: linear-gradient(to right, #c084fc, #ec4899);}
+
+.backprj div{height:480px;}
+
+
+/* 왼쪽 목록 */
+.backprj .left {
+  width:35%;
+  background: var(--clr-card);
+  border: 1px solid var(--clr-border);
+  border-radius: 20px;
+  backdrop-filter: blur(12px);
+
+  padding: 2rem;
+  box-shadow: 0 0 20px var(--clr-glow);
+  transition: 0.4s ease;
+  overflow: hidden;
+
+}
+.backprj .left ul{
+  overflow-y: auto;
+  width: 100%;
+  height: 100%;
+}
+
+.backprj .left li {
+  width:85%;
+  padding: 1rem;
+  color: var(--clr-muted);
+  cursor: pointer;
+  border-bottom: 1px solid var(--clr-border);
+  transition: 0.3s ease;
+}
+
+.backprj .left li.active {
+  color: var(--clr-text);
+  font-weight: 700;
+  background: linear-gradient(90deg, #6a11cb, #2575fc);
+  border-radius: 10px;
+  box-shadow: 0 0 12px var(--clr-glow);
+}
+
+.backprj .right {
+  width:60%;
+  background: var(--clr-card);
+  border: 1px solid var(--clr-border);
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 30px var(--clr-glow);
+  padding: 2rem;
+  transition: 0.4s ease;
+}
