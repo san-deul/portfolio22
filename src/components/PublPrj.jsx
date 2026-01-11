@@ -16,7 +16,7 @@ export default function PublPrj() {
   const laptop = parseInt(size.laptop, 10);
 
   return (
-    <Section>
+    <Section id="publishing">
       <SectionTitle>Publishing</SectionTitle>
 
       <SectionIn>

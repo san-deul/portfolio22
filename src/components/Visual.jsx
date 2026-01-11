@@ -30,7 +30,7 @@ export default function Visual({ theme }) {
 
   return (
 
-    <VisualWrap>
+    <VisualSection id="visual">
       <SectionIn>
         <EditorFrame $mode={theme}>
           <TopBar>
@@ -48,7 +48,7 @@ export default function Visual({ theme }) {
         </EditorFrame>
       </SectionIn>
 
-    </VisualWrap>
+    </VisualSection>
 
   );
 }
@@ -71,7 +71,7 @@ const VisualWrap1 = styled.section`
 */  transition: background 0.4s ease;
 `;
 
-const VisualWrap = styled(Section)`
+const VisualSection = styled(Section)`
   display: flex;
   justify-content: center;
   align-items: center;

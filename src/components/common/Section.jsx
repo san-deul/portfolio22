@@ -7,6 +7,8 @@ import styled from "styled-components";
  */
 
 export const Section = styled.section`
+
+   scroll-margin-top: 70px;
   width: 100%;
   height: 100vh;
   
@@ -38,6 +40,12 @@ export const SectionIn = styled.div`
   padding: ${({ padding }) => padding || "40px 20px"};
   background: ${({ bg }) => bg || "none"};
   box-sizing: border-box;
+
+    ${({ variant }) =>
+    variant === "backend" &&
+    `
+     background:white
+    `}
 
   @media ${(props) => props.theme.device.tablet},
          ${(props) => props.theme.device.mobile}{

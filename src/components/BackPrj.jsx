@@ -39,9 +39,9 @@ export default function BackPrj() {
     "1": {
       title: "카드 월말 정산 자동화 구축",
       back: [
-        "월말 전환 시 카드 잔액 싱크 문제 발생",
-        "외부 카드업체 데몬 동작 중에도 잔액 불일치 지속",
-        "사용자 카드 잔액이 초기화되거나 잘못 반영되는 위험",
+        "월말 정산 시점에 카드 잔액 정합성 이슈 발생",
+        "외부 카드사 연동 프로세스 동작 중에도 잔액 불일치 지속",
+        "잔액 오류로 인한 사용자 신뢰도 저하 가능성 존재",
       ],
       role: [
         "월말 백업 → 잠금 → 검증 → 동기화 → 복원 자동화 로직 구축",
@@ -58,7 +58,7 @@ export default function BackPrj() {
       back: [
         "여러 사이트가 단일 회원 DB를 공유하는 구조",
         "B사이트를 A사이트 하위 브랜드로 통합 필요",
-        "20개 이상의 테이블 연동으로 데이터 유실 위험 존재",
+        "20개 이상의 테이블이 연관된 구조로 마이그레이션 시 데이터 정합성 확보 필요",
       ],
       role: [
         "DB 구조 영향도 분석 및 정합성 검증",
@@ -70,8 +70,8 @@ export default function BackPrj() {
     "3": {
       title: "외부 쇼핑몰 상품 데이터 연동 안정화",
       back: [
-        "외부 API 데이터 오류 및 스키마 불일치",
-        "상품 정보, 재고, 상태 오표시 문제",
+        "외부 API 응답 데이터의 스키마 불일치 및 값 누락 발생",
+        "상품 정보, 재고, 판매 상태의 오표시 이슈 발생",
       ],
       role: [
         "API 응답 → DB 매핑 로직 정비",
@@ -82,7 +82,7 @@ export default function BackPrj() {
     },
     "4": {
       title: "실시간 상품 정보 크롤링 시스템 구축",
-      back: ["실시간 공지 게시판 기반으로만 정보 제공되어 최대 12시간 정보 차이 발생"],
+      back: ["공지 게시판 수동 확인 방식으로 인해 최대 정보 지연 발생"],
       role: [
         "실시간 공지 크롤링 엔진 개발",
         "1분 주기 스케줄링",
@@ -92,7 +92,7 @@ export default function BackPrj() {
     },
     "5": {
       title: "예치금 모니터링 및 알림 시스템 개발",
-      back: ["관리자가 수동으로 예치금 확인 필요"],
+      back: ["예치금 현황을 관리자가 수동으로 확인해야 하는 운영 구조"],
       role: [
         "예치금 페이지 크롤링 자동화",
         "일 1회 자동 실행 스케줄링",
@@ -102,7 +102,7 @@ export default function BackPrj() {
     },
     "6": {
       title: "상품 가격 경쟁력 분석 대시보드 개발",
-      back: ["경쟁사 대비 가격 경쟁력 분석 어려움"],
+      back: ["경쟁사 대비 가격 경쟁력을 정량적으로 파악하기 어려운 구조"],
       role: [
         "신규 상품 자동 수집 시스템",
         "네이버 쇼핑 API 최저가 비교",
@@ -112,7 +112,7 @@ export default function BackPrj() {
     },
     "7": {
       title: "통합 인증 시스템 연동",
-      back: ["기존 솔루션 회원 시스템을 통합 로그인 방식으로 변경 필요"],
+      back: ["기존 솔루션 기반 회원 시스템을 통합 인증 구조로 전환 필요"],
       role: [
         "통합 인증 API 연동 (로그인/회원가입/수정)",
         "로그인 시 기존 회원 여부 확인 후 자동 가입 처리",
@@ -121,7 +121,7 @@ export default function BackPrj() {
     },
     "8": {
       title: "PHP 기반 쇼핑몰 유지보수",
-      back: [],
+      back: ["기존 PHP 기반 쇼핑몰의 기능 확장 및 운영 안정화 필요"],
       role: [
         "관리자 대량 상품 등록 기능 개발",
         "해외 직구 기능 추가",
@@ -132,10 +132,26 @@ export default function BackPrj() {
   };
 
   return (
-    <Section>
+    <BackSection id="backend">
       <SectionTitle>BackEnd</SectionTitle>
+      <BackSummaryIn>
+        <ul>
+          <li>
+            <strong>근무 기간</strong> : 2025.04 - 2025.12
+          </li>
+          <li>
+            PHP 5.5 기반 레거시 쇼핑몰과 <br/>
+            Node.js / Express 기반 서버를 함께 운영하며,<br/><br/>
 
-      <BackSectionIn>
+            기존 시스템의 안정성을 유지하면서<br/>
+            데이터 동기화, 자동화, 외부 연동 기능을<br/>
+            점진적으로 개선하는 역할을 담당했습니다.
+          </li>
+
+        </ul>
+      </BackSummaryIn>
+
+      <BackSectionIn >
         {/* LEFT 영역 */}
         <LeftPanel isMobile={isMobile}>
           {isMobile ? (
@@ -143,9 +159,8 @@ export default function BackPrj() {
               {projects.map((p) => (
                 <SwiperSlide key={p.id}>
                   <div
-                    className={`mobile-item ${
-                      active === p.id ? "active" : ""
-                    }`}
+                    className={`mobile-item ${active === p.id ? "active" : ""
+                      }`}
                     onClick={() => setActive(p.id)}
                   >
                     {p.title}
@@ -195,7 +210,7 @@ export default function BackPrj() {
           </div>
         </RightPanel>
       </BackSectionIn>
-    </Section>
+    </BackSection>
   );
 }
 
@@ -203,12 +218,27 @@ export default function BackPrj() {
    styled-components + theme.device 반응형 적용
    ========================================================= */
 
+
+const BackSection = styled(Section)`
+  height:auto;
+`;
+
 const SectionTitle = styled(Title)``;
+
+const BackSummaryIn = styled(SectionIn)`
+  color:#fff;
+  height:auto;
+  text-align: center;
+  line-height:19px;
+
+  li{margin-bottom:15px;}
+`
 
 const BackSectionIn = styled(SectionIn)`
   display: flex;
   height: 95%;
   gap: 5%;
+
 
   @media ${({ theme }) => theme.device.tablet} {
     flex-direction: column;

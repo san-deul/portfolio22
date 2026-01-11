@@ -10,36 +10,31 @@ import { Section, SectionIn } from "./common/Section";
 import { Card } from "./common/Card";
 
 export default function FrontPrj() {
-  const [bgImage, setBgImage] = useState(null);
-  const frontRef = useRef(null);
+  const [bgImage, setBgImage] = useState(null);  const frontRef = useRef(null);
 
-  const handleHover = (img) => setBgImage(img);
-  const handleLeave = () => setBgImage(null);
+
 
   return (
-    <Section>
+    <Section id="frontend">
 
-      <BgImage
-        style={{ backgroundImage: bgImage ? `url(${bgImage})` : "none" }}
-        className={bgImage ? "visible" : ""}
-      />
+
 
       <SectionIn>
         <SectionTitle>Frontend</SectionTitle>
 
         <Cards>
-          <CustomCard
-            onMouseEnter={() => handleHover(img1)}
-            onMouseLeave={handleLeave}
-          >
+          <CustomCard>
             <CardInner>
               <CardImage>
                 <img src={img1} alt="프로젝트1" />
               </CardImage>
               <CardText>
-                <p>쇼핑몰 프로젝트</p>
-                <p>React / supabase</p>
-                <p></p>
+                <div className="cardTitle">
+                  개인 쇼핑몰 서비스를 가정하여 제작한 React 기반 프론트엔드 프로젝트입니다.
+                </div>
+                <p>React / React Router</p>
+                <p>Supabase</p>
+                <p>Vercel</p>
               </CardText>
               <Buttons>
                 <Button
@@ -62,19 +57,19 @@ export default function FrontPrj() {
           </CustomCard>
 
           
-            <CustomCard
-              onMouseEnter={() => handleHover(img2)}
-              onMouseLeave={handleLeave}
-            >
+            <CustomCard >
 
               <CardInner>
                 <CardImage>
                   <img src={img2} alt="프로젝트1" />
                 </CardImage>
                 <CardText>
-                  <p>호텔 프로젝트</p>
-                  <p>React / supabase / Tailwind CSS / Zustand /React Query </p>
-                  <p>현재 작업 진행중인 프로젝트입니다.</p>
+                  <div class>호텔 프로젝트</div>
+                  <p>React / React Router</p>
+                  <p>React Query</p>
+                  <p>Zustand</p>
+                  <p>Supabase</p>
+                  <p>Vercel</p>
                 </CardText>
                 <Buttons>
                   <Button
@@ -97,6 +92,12 @@ export default function FrontPrj() {
             </CustomCard>
           
         </Cards>
+      </SectionIn>
+
+      {/* ---------------------------------  */}
+      
+      <SectionIn>
+
       </SectionIn>
     </Section>
   );
@@ -173,7 +174,12 @@ const CardImage = styled.div`
 const CardText = styled.div`
   margin-top: 20px;
   text-align: center;
-  
+  .cardTitle{
+    color:#fff;
+    margin-bottom:20px;
+    text-align:left;
+    font-weight:bold;
+  }
   p{color:#fff !important;margin-bottom:4px;transition: all 0.6s;}
 `;
 

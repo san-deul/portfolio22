@@ -14,14 +14,14 @@ const experience = [
   { period: "2021. 09 ~ 2022. 03", con: "[디지털디자인] 모바일 웹 & 앱디자인(웹퍼블리셔, jQuery, Vue.js)-A" },
   { period: "2022. 07 ~ 2023. 11", con: "웹퍼블리셔 근무" },
   { period: "2023. 12 ~ 2024. 06", con: "클라우드 활용 JAVA 개발자 양성과정" },
-  { period: "2025. 04 ~ 현재", con: "백엔드 개발자 근무 중" },
+  { period: "2025. 04 ~ 12", con: "백엔드 개발자 근무 / 임금체불로 인한 퇴사" },
 ];
 
 export default function Profile() {
 
 
   return (
-    <Section>
+    <Section id="about">
       <SectionTitle>About Me</SectionTitle>
 
       <ProfileSectionIn>

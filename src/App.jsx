@@ -11,12 +11,13 @@ import Visual from "./components/Visual";
 import GlobalStyle from "./styles/GlobalStyle";
 import { device } from "./styles/theme";
 import { ThemeProvider } from "styled-components";
+import Header from "./components/common/Header";
 
 function App() {
   return (
     <ThemeProvider theme={{ device }}>
     <GlobalStyle/>
-
+      <Header />
       <Visual/>
       
       
