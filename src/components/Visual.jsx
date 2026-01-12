@@ -15,6 +15,7 @@ export default function Visual({ theme }) {
 
   useEffect(() => {
     if (line < introText.length) {
+      setDisplayText("");
       let i = 0;
       const timer = setInterval(() => {
         setDisplayText(introText[line].slice(0, i + 1));
@@ -132,6 +133,9 @@ const CodeArea = styled.pre`
   white-space: pre-wrap;
   animation: ${glow} 2s ease-in-out infinite alternate;
   transition: color 0.3s ease;
+
+  height:12rem;
+  min-height: 9rem;
 `;
 
 const Line = styled.div`

@@ -64,10 +64,11 @@ export default function FrontPrj() {
                   <img src={img2} alt="프로젝트1" />
                 </CardImage>
                 <CardText>
-                  <div class>호텔 프로젝트</div>
+                  <div className="cardTitle"> 호텔 예약 사이트를 가정하여 제작한 React 기반 프론트엔드 프로젝트입니다.</div>
                   <p>React / React Router</p>
                   <p>React Query</p>
                   <p>Zustand</p>
+                  <p>Tailwind</p>
                   <p>Supabase</p>
                   <p>Vercel</p>
                 </CardText>
@@ -165,8 +166,11 @@ const CardInner = styled.div`
 
 const CardImage = styled.div`
   width: 100%;
+  height:220px;
   img {
     width: 100%;
+    height:100%;
+    object-fit:cover;
     border-radius: 12px;
   }
 `;
