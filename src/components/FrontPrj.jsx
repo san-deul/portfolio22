@@ -10,15 +10,12 @@ import { Section, SectionIn } from "./common/Section";
 import { Card } from "./common/Card";
 
 export default function FrontPrj() {
-  const [bgImage, setBgImage] = useState(null);  const frontRef = useRef(null);
+  const [bgImage, setBgImage] = useState(null); const frontRef = useRef(null);
 
 
 
   return (
     <Section id="frontend">
-
-
-
       <SectionIn>
         <SectionTitle>Frontend</SectionTitle>
 
@@ -52,51 +49,58 @@ export default function FrontPrj() {
                 </Button>
               </Buttons>
 
+              <Divv>
+                <p>
+                  현재 next.js + typescript 로 리팩토링 진행중입니다.
+                </p>
+                <Button>GitHub</Button>
+              </Divv>
+
 
             </CardInner>
           </CustomCard>
 
-          
-            <CustomCard >
 
-              <CardInner>
-                <CardImage>
-                  <img src={img2} alt="프로젝트1" />
-                </CardImage>
-                <CardText>
-                  <div className="cardTitle"> 호텔 예약 사이트를 가정하여 제작한 React 기반 프론트엔드 프로젝트입니다.</div>
-                  <p>React / React Router</p>
-                  <p>React Query</p>
-                  <p>Zustand</p>
-                  <p>Tailwind</p>
-                  <p>Supabase</p>
-                  <p>Vercel</p>
-                </CardText>
-                <Buttons>
-                  <Button
-                    href="https://my-hotel-app-beige.vercel.app/"
-                    target="_blank"
-                  >
-                    보러가기
-                  </Button>
+          <CustomCard >
 
-                  <Button
-                    href="https://github.com/san-deul/my-hotel-app"
-                    target="_blank"
-                  >
-                    GitHub
-                  </Button>
-                </Buttons>
-              </CardInner>
+            <CardInner>
+              <CardImage>
+                <img src={img2} alt="프로젝트1" />
+              </CardImage>
+              <CardText>
+                <div className="cardTitle"> 호텔 예약 사이트를 가정하여 제작한 React 기반 프론트엔드 프로젝트입니다.</div>
+                <p>React / React Router</p>
+                <p>React Query</p>
+                <p>Zustand</p>
+                <p>Tailwind</p>
+                <p>Supabase</p>
+                <p>Vercel</p>
+              </CardText>
+              <Buttons>
+                <Button
+                  href="https://my-hotel-app-beige.vercel.app/"
+                  target="_blank"
+                >
+                  보러가기
+                </Button>
+
+                <Button
+                  href="https://github.com/san-deul/my-hotel-app"
+                  target="_blank"
+                >
+                  GitHub
+                </Button>
+              </Buttons>
+            </CardInner>
 
 
-            </CustomCard>
-          
+          </CustomCard>
+
         </Cards>
       </SectionIn>
 
       {/* ---------------------------------  */}
-      
+
       <SectionIn>
 
       </SectionIn>
@@ -188,6 +192,8 @@ const CardText = styled.div`
 `;
 
 
+
+
 const CustomCard = styled(Card)`
   cursor: pointer;
 
@@ -195,6 +201,14 @@ const CustomCard = styled(Card)`
     color: #000;
   }
 `
+
+const Divv = styled.div`
+  margin-top:20px;
+  width:100%;
+  text-align: center;
+  p{color:#fff;text-align:center;margin:18px 0;} 
+  Button{display:block;}
+`;
 
 
 
@@ -210,6 +224,7 @@ const Buttons = styled.div`
 `;
 
 const Button = styled.a`
+display:inline-block;
   padding: 8px 16px;
   font-size: 14px;
   border-radius: 6px;
