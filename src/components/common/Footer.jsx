@@ -2,6 +2,24 @@ import styled, { keyframes } from "styled-components";
 import { useEffect, useState, useRef } from "react";
 import { Section, SectionIn } from "./Section";
 
+/* =========================
+   ✅ Soft Neumorphism Tokens (Light only)
+========================= */
+const nm = {
+  bg: "#EEF2FA",
+  text: "#2b3445",
+  muted: "#7b8797",
+  accent: "#4f7cff",
+  shadowDark: "rgba(120, 135, 160, 0.18)",
+  shadowLight: "rgba(255, 255, 255, 0.95)",
+  stroke: "rgba(255,255,255,0.65)",
+};
+
+const nmOutSoft = `
+  10px 10px 26px ${nm.shadowDark},
+  -10px -10px 26px ${nm.shadowLight}
+`;
+
 export default function Footer() {
   const fullText = "Thank you for watching my portfolio ✨";
   const [text, setText] = useState("");
@@ -12,19 +30,16 @@ export default function Footer() {
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
-        if (entries[0].isIntersecting) {
-          setStartTyping(true);
-        }
+        if (entries[0].isIntersecting) setStartTyping(true);
       },
-      { threshold: 0.5 } // 50% 보이면 발동
+      { threshold: 0.5 }
     );
 
     if (footerRef.current) observer.observe(footerRef.current);
-
     return () => observer.disconnect();
   }, []);
 
-  /* ✨ 글자 타이핑 효과 */
+  /* ✨ 타이핑 효과 */
   useEffect(() => {
     if (!startTyping) return;
 
@@ -48,15 +63,18 @@ export default function Footer() {
 }
 
 /* =====================
-   styled-components
+   styled-components (Soft Neumorphism Footer)
 ====================== */
 
 const FooterSection = styled(Section)`
-  height: auto;
+  background: ${nm.bg};
+  height: 140px !important;
+  min-height:auto;
   margin-top: 120px;
   text-align: center;
+
   @media ${({ theme }) => theme.device.tablet} {
-    margin-top:0px;
+    margin-top: 0;
   }
 `;
 
@@ -65,32 +83,37 @@ const fadeIn = keyframes`
   to { opacity: 1; transform: translateY(0); }
 `;
 
-const FooterWrap = styled(SectionIn)`
+const FooterWrap = styled.div`
   width: 100%;
   text-align: center;
   padding: 4rem;
   height: 200px;
-  border-top: 1px solid var(--clr-border);
-  backdrop-filter: blur(15px);
-  animation: ${fadeIn} 1s ease forwards;
+
+  background: ${nm.bg};
+  border-radius: 26px;
+
+
+  animation: ${fadeIn} 0.8s ease forwards;
 
   @media ${({ theme }) => theme.device.tablet} {
-    height:auto;
-    padding:1rem;
+    height: auto;
+    padding: 1.6rem;
   }
 `;
 
 const FooterText = styled.p`
   display: inline-block;
-  font-size: 1.6rem;
-  font-weight: 600;
-  letter-spacing: 1px;
-  color: var(--clr-text);
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: ${nm.text};
+
+  /* ✅ 은은한 포인트 gradient */
   background: linear-gradient(90deg, #93c5fd, #a78bfa);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+
   white-space: pre;
-  transition: all 0.3s ease;
   height: 36px;
 
   @media ${({ theme }) => theme.device.tablet} {

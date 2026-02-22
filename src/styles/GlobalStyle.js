@@ -144,7 +144,7 @@ const GlobalStyle = createGlobalStyle`
     //background-image: url(https://i.postimg.cc/RFqSM2rc/bg.jpg);
    // background-size: contain;
    //background: linear-gradient(45deg, #FC466B, #3F5EFB);
-    background: radial-gradient(circle at center,#5F4BD8 0%,#0B0730 100%);
+    //background: radial-gradient(circle at center,#5F4BD8 0%,#0B0730 100%);
 
 
 
@@ -153,9 +153,9 @@ const GlobalStyle = createGlobalStyle`
 
   #root {
     width: 100%;
-    background: var(--clr-bg);
+    //background: var(--clr-bg);
     min-height: 100vh;
-    
+    background:#EEF2FA;
   }
 
   .section {
@@ -185,7 +185,7 @@ const GlobalStyle = createGlobalStyle`
     top: 2rem;
     right: 0;
     z-index: 9999;
-    background: linear-gradient(90deg, #6a11cb, #2575fc);
+    //background: linear-gradient(90deg, #6a11cb, #2575fc);
     border: none;
     color: white;
     border-radius: 50%;

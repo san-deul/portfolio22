@@ -10,8 +10,8 @@ export const Section = styled.section`
 
    scroll-margin-top: 70px;
   width: 100%;
-  height: 100vh;
-  
+  min-height: 100vh;
+  height:auto;
   position: relative;
   //background: ${({ bg }) => bg || "transparent"};
     
@@ -22,7 +22,9 @@ export const Section = styled.section`
       : "radial-gradient(circle at center,#5F4BD8 0%,#0B0730 100%)"};
 
     */
-    background:radial-gradient(circle at center, #5F4BD8 0%, #0B0730 100%);
+    //background:radial-gradient(circle at center, #5F4BD8 0%, #0B0730 100%);
+    //background:radial-gradient(circle at center, #5F4BD8 0%, #0B0730 100%);
+    //background:#e9eef6;;
 
     @media  ${(props) => props.theme.device.tablet},
             ${(props) => props.theme.device.mobile}{

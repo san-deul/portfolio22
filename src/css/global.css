@@ -1,42 +1,6 @@
-:root {
-  /* ==== DARK MODE ==== */
-  --clr-bg-dark: linear-gradient(145deg, #0a0a0f, #1a1a2e);
-  --clr-card-dark: rgba(255, 255, 255, 0.08);
-  --clr-border-dark: rgba(255, 255, 255, 0.15);
-  --clr-text-dark: #ffffff;
-  --clr-muted-dark: #cccccc;
-  --clr-glow-dark: rgba(120, 200, 255, 0.4);
 
-  /* ==== LIGHT MODE ==== */
-  --clr-bg-light: linear-gradient(145deg, #f4f7ff, #ffffff);
-  --clr-card-light: rgba(255, 255, 255, 0.85);
-  --clr-border-light: rgba(0, 0, 0, 0.1);
-  --clr-text-light: #111111;
-  --clr-muted-light: #333333;
-  --clr-glow-light: rgba(150, 180, 255, 0.5);
-}
 
-/* === Default: dark === */
-[data-theme="dark"] {
-  --clr-bg: var(--clr-bg-dark);
-  --clr-card: var(--clr-card-dark);
-  --clr-border: var(--clr-border-dark);
-  --clr-text: var(--clr-text-dark);
-  --clr-muted: var(--clr-muted-dark);
-  --clr-glow: var(--clr-glow-dark);
-}
-
-/* === Light === */
-[data-theme="light"] {
-  --clr-bg: var(--clr-bg-light);
-  --clr-card: var(--clr-card-light);
-  --clr-border: var(--clr-border-light);
-  --clr-text: var(--clr-text-light);
-  --clr-muted: var(--clr-muted-light);
-  --clr-glow: var(--clr-glow-light);
-}
-
-/* === Global Body === */
+/* === Global Body ===
 body {
   background: var(--clr-bg);
   color: var(--clr-text);
@@ -47,6 +11,38 @@ body {
   width:100%;
   background: var(--clr-bg);
   min-height: 100vh;
+} */
+
+:root {
+
+  --nm-bg: #e9eef6;
+
+  /* 텍스트 */
+  --nm-text: #2b3445;
+  --nm-muted: #7b8797;
+
+  /* 포인트(블루 계열) */
+  --nm-accent: #4f7cff;
+
+  /* 라운드 */
+  --nm-radius: 18px;
+
+  /* 그림자 강도 (원하면 숫자만 조절) */
+  --nm-shadow-dark: rgba(163, 177, 198, 0.65);
+  --nm-shadow-light: rgba(255, 255, 255, 0.9);
+
+  /* “튀어나온” 기본 shadow */
+  --nm-out: 10px 10px 22px var(--nm-shadow-dark),
+            -10px -10px 22px var(--nm-shadow-light);
+
+  /* “파인(inset)” shadow */
+  --nm-in: inset 8px 8px 16px var(--nm-shadow-dark),
+           inset -8px -8px 16px var(--nm-shadow-light);
+}
+
+body {
+  background: var(--nm-bg);
+  color: var(--nm-text);
 }
 
 .section{width:100%;height:100vh;}

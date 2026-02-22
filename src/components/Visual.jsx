@@ -2,12 +2,32 @@ import styled, { keyframes } from "styled-components";
 import { useEffect, useState } from "react";
 import { Section, SectionIn } from "./common/Section";
 
+const nm = {
+  bg: "#EEF2FA",                 // 예시 이미지처럼 살짝 보라/블루 톤
+  text: "#2b3445",
+  muted: "#7b8797",
+  shadowDark: "rgba(120, 135, 160, 0.18)",  // ✅ 매우 연하게
+  shadowLight: "rgba(255, 255, 255, 0.95)", // ✅ 위쪽 빛
+  stroke: "rgba(255,255,255,0.55)",         // ✅ 얇은 하이라이트
+};
+
+const nmOutSoft = `
+  10px 10px 26px ${nm.shadowDark},
+  -10px -10px 26px ${nm.shadowLight}
+`;
+
+const nmOutTiny = `
+  6px 6px 16px ${nm.shadowDark},
+  -6px -6px 16px ${nm.shadowLight}
+`;
 export default function Visual({ theme }) {
+
+
   const introText = [
-   " 1픽셀의 디테일부터 보이지 않는 데이터의 흐름까지.",
+    "1픽셀의 디테일부터 보이지 않는 데이터의 흐름까지.",
     "기술적 이해와 사용자 경험, 두 관점을 연결하며",
-    "완성도 높은 인터페이스를 만들어갑니다.",
-  
+    "완성도 높은 인터페이스를 만드는 개발자가 되겠습니다.",
+
   ];
 
   const [displayText, setDisplayText] = useState("");
@@ -22,44 +42,43 @@ export default function Visual({ theme }) {
         i++;
         if (i === introText[line].length) {
           clearInterval(timer);
-          setTimeout(() => setLine((prev) => prev + 1), 700);
-        }
+          setTimeout(() => { 
+             setDisplayText("");
+          setLine((prev) => prev + 1);
+        },700);
+      }
       }, 70);
-      return () => clearInterval(timer);
-    }
+  return () => clearInterval(timer);
+}
   }, [line]);
 
-  return (
+return (
 
-    <VisualSection id="visual">
-      <SectionIn>
-        <EditorFrame $mode={theme}>
-          <TopBar>
-            <Dot color="#ff5f56" />
-            <Dot color="#ffbd2e" />
-            <Dot color="#27c93f" />
+  <VisualSection id="visual">
+    <SectionIn>
+      <EditorFrame $mode={theme}>
+        <TopBar>
+          <Dot color="#ff5f56" />
+          <Dot color="#ffbd2e" />
+          <Dot color="#27c93f" />
 
-          </TopBar>
-          <CodeArea $mode={theme}>
-            {introText.slice(0, line).map((t, i) => (
-              <Line key={i}>{t}</Line>
-            ))}
-            {line < introText.length && <Line>{displayText}|</Line>}
-          </CodeArea>
-        </EditorFrame>
-      </SectionIn>
+        </TopBar>
+        <CodeArea $mode={theme}>
+          {introText.slice(0, line).map((t, i) => (
+            <Line key={i}>{t}</Line>
+          ))}
+          {line < introText.length && <Line>{displayText}|</Line>}
+        </CodeArea>
+      </EditorFrame>
+    </SectionIn>
 
-    </VisualSection>
+  </VisualSection>
 
-  );
+);
 }
 
 /* ========================= styled ========================= */
 
-const glow = keyframes`
-  from { text-shadow: 0 0 6px #a78bfa, 0 0 10px #c084fc; }
-  to { text-shadow: 0 0 16px #c084fc, 0 0 25px #e879f9; }
-`;
 
 const VisualWrap1 = styled.section`
   height: 100vh;
@@ -76,42 +95,34 @@ const VisualSection = styled(Section)`
   display: flex;
   justify-content: center;
   align-items: center;
+  background: ${nm.bg};
+ 
 `
 
 
 const EditorFrame = styled.div`
   width: 100%;
-  border-radius: 16px;
+  border-radius: 26px;
   overflow: hidden;
-  backdrop-filter: blur(15px);
-  background: ${({ $mode }) =>
-    $mode === "light"
-      ? "rgba(180, 160, 255, 0.35)"
-      : "rgba(255, 255, 255, 0.05)"};
-  box-shadow: ${({ $mode }) =>
-    $mode === "light"
-      ? "0 0 40px rgba(160, 120, 255, 0.25)"
-      : "0 0 25px rgba(150, 100, 255, 0.2)"};
-  transition: all 0.4s ease;
-  border: px solid rgba(255, 255, 255, 0.2);
-  text-align: center;
-
-
-    @media  ${(props) => props.theme.device.tablet},
-            ${(props) => props.theme.device.mobile}{
-    text-align: left;
-  }
+  background: ${nm.bg};
+  box-shadow: ${nmOutSoft};
+  border: 1px solid ${nm.stroke};
 `;
 
 
 const TopBar = styled.div`
-  height: 38px;
+   height: 44px;
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 0 14px;
-  background: rgba(255, 255, 255, 0.08);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0 16px;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.55),
+    rgba(255,255,255,0.15)
+  );
+  border-bottom: 1px solid rgba(120,135,160,0.12);
 `;
 
 const Dot = styled.div`
@@ -124,17 +135,23 @@ const Dot = styled.div`
 
 
 const CodeArea = styled.pre`
-  color: ${({ $mode }) =>
-    $mode === "light" ? "#7c3aed" : "#d8b4fe"};
+     margin: 18px;
+     height:12rem;
   padding: 2rem;
-  font-size: 1.3rem;
-  line-height: 1.8;
-  font-family: "Fira Code", monospace;
-  white-space: pre-wrap;
-  animation: ${glow} 2s ease-in-out infinite alternate;
-  transition: color 0.3s ease;
+  //background:blue;
+  //background: rgba(255,255,255,0.35); /* ✅ 예시처럼 살짝 밝게 */
+  //border: 1px solid rgba(255,255,255,0.55);
+  //border-radius: 18px;
 
-  height:12rem;
+  /* ✅ 패인 느낌 X, 대신 아주 은은한 out */
+  //box-shadow: ${nmOutTiny};
+
+  color: rgba(92, 99, 114, 0.75);
+  font-size: 1.25rem;
+  line-height: 1.8;
+  
+  white-space: pre-wrap;
+
   min-height: 9rem;
 `;
 

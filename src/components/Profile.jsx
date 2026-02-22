@@ -1,13 +1,35 @@
-
 import { Card } from "./common/Card";
 import { Section, SectionIn } from "./common/Section";
 import { Title } from "./common/Title";
-import styled, { keyframes } from 'styled-components';
+import styled from "styled-components";
+
+/* =========================
+   ✅ Soft Neumorphism Tokens (Light only)
+========================= */
+const nm = {
+  bg: "#EEF2FA",
+  text: "#2b3445",
+  muted: "#7b8797",
+  accent: "#4f7cff",
+  shadowDark: "rgba(120, 135, 160, 0.18)",
+  shadowLight: "rgba(255, 255, 255, 0.95)",
+  stroke: "rgba(255,255,255,0.65)",
+};
+
+const nmOutSoft = `
+  10px 10px 26px ${nm.shadowDark},
+  -10px -10px 26px ${nm.shadowLight}
+`;
+
+const nmOutTiny = `
+  6px 6px 16px ${nm.shadowDark},
+  -6px -6px 16px ${nm.shadowLight}
+`;
 
 const skills = {
-  frontend: ["HTML", "CSS", "JavaScript", "React"],
+  frontend: ["HTML", "CSS", "JavaScript", "React", "TypeScript", "Next.js"],
   backend: ["Node.js", "Express", "JAVA", "MySQL", "SpringBoot", "Oracle"],
-  tools: ["Git/GitHub", "Supabase"]
+  tools: ["Git/GitHub", "Supabase"],
 };
 
 const experience = [
@@ -18,18 +40,16 @@ const experience = [
 ];
 
 export default function Profile() {
-
-
   return (
-    <Section id="about">
+    <AboutSection id="about">
       <SectionTitle>About Me</SectionTitle>
 
       <ProfileSectionIn>
         {/* ================= Profile Card ================= */}
-
         <ProfileCard>
           <ProfileInfo>
             <SubTitle>Profile</SubTitle>
+
             <ProfileArea>
               <Row>
                 <ProfileTitle>Name</ProfileTitle>
@@ -57,45 +77,36 @@ export default function Profile() {
               </Row>
             </ProfileArea>
           </ProfileInfo>
-
         </ProfileCard>
 
+        {/* ================= Skills Card ================= */}
         <ProfileCard>
           <SubTitle>Skills</SubTitle>
 
           <SkillGroup>
-            
             <SkillList>
-              {skills.frontend.map((s, i) => <li key={i}>{s}</li>)}
+              {skills.frontend.map((s, i) => (
+                <li key={i}>{s}</li>
+              ))}
             </SkillList>
           </SkillGroup>
 
           <SkillGroup>
-            
             <SkillList>
-              {skills.backend.map((s, i) => <li key={i}>{s}</li>)}
+              {skills.backend.map((s, i) => (
+                <li key={i}>{s}</li>
+              ))}
             </SkillList>
           </SkillGroup>
 
           <SkillGroup>
-            
             <SkillList>
-              {skills.tools.map((s, i) => <li key={i}>{s}</li>)}
+              {skills.tools.map((s, i) => (
+                <li key={i}>{s}</li>
+              ))}
             </SkillList>
           </SkillGroup>
         </ProfileCard>
-
-
-        {/*
-        <Card flex>
-          
-
-        </Card>*/}
-
-        {/* ================= Skills Card ================= */}
-
-
-
 
         {/* ================= Experience Card ================= */}
         <ProfileCard>
@@ -110,9 +121,8 @@ export default function Profile() {
             ))}
           </CareerList>
         </ProfileCard>
-
       </ProfileSectionIn>
-    </Section>
+    </AboutSection>
   );
 }
 
@@ -120,50 +130,39 @@ export default function Profile() {
 /* ========================= Styled ========================= */
 /* ========================================================= */
 
-const SectionTitle = styled(Title)`
+const AboutSection = styled(Section)`
+  background: ${nm.bg};
+`;
 
+const SectionTitle = styled(Title)`
+  color: ${nm.text};
 `;
 
 const ProfileSectionIn = styled(SectionIn)`
   display: flex;
   flex-direction: column;
-  gap: 5%;
+  gap: 18px;
   width: 100%;
-  color: #fff;
-  transition: 0.4s ease;
+  transition: 0.25s ease;
 `;
+
 const ProfileCard = styled(Card)`
-  width:100%;
-  margin-bottom:20px;
-`
-/*
-const Card = styled.div`
   width: 100%;
-  background: var(--clr-card);
-  border-radius: 20px;
-  border: 1px solid var(--clr-border);
-  padding: 2rem;
-  backdrop-filter: blur(20px);
-  box-shadow: 0 0 25px var(--clr-glow);
-  transition: 0.3s ease;
-  margin-bottom:20px;
+  margin-bottom: 0;
+  padding: 26px 22px;
 
-
-  ${(props) =>
-    props.flex &&
-    `
-    display: flex;
-    align-items: flex-start;
-    gap: 2rem;
-  `}
+  background: ${nm.bg};
+  border-radius: 22px;
+  border: 1px solid ${nm.stroke};
+  box-shadow: ${nmOutSoft};
 `;
-*/
+
 const SubTitle = styled.h3`
-  font-size: 1.4rem;
-  margin-bottom: 1.4rem;
-  background: linear-gradient(to right, #818cf8, #22d3ee);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font-size: 1.25rem;
+  margin-bottom: 1.1rem;
+  font-weight: 900;
+  color: ${nm.text};
+  letter-spacing: -0.01em;
 `;
 
 const ProfileInfo = styled.div`
@@ -173,7 +172,7 @@ const ProfileInfo = styled.div`
 const ProfileArea = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
+  gap: 0.85rem;
 `;
 
 const Row = styled.div`
@@ -184,113 +183,97 @@ const Row = styled.div`
 
 const ProfileTitle = styled.div`
   width: 25%;
-  font-weight: 600;
+  font-weight: 800;
+  color: ${nm.text};
 `;
 
 const ProfileCon = styled.div`
   width: 75%;
   word-break: break-all;
+  color: ${nm.muted};
 
   a {
-    color:  #fff !important;
+    color: ${nm.accent};
+    text-decoration: none;
+    font-weight: 800;
+  }
+
+  a:hover {
     text-decoration: underline;
   }
 `;
 
-
-
-/* 테두리 회전 애니메이션 */
-const rotateBorder = keyframes`
-  to {
-    --gradient-angle: 360deg;
-  }
-`;
-
+/* ✅ Skill pill: 패임/글래스 제거 → soft out */
 const SkillList = styled.ul`
   display: flex;
   flex-wrap: wrap;
   gap: 0.7rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 
   li {
-    position: relative;
-    padding: 0.5rem 1rem;
-    border-radius: 12px;
-    background: rgba(255,255,255,0.08);
-    backdrop-filter: blur(10px);
-    font-size: 0.85rem;
-    border: 1px solid rgba(255,255,255,0.12);
-    transition: transform 0.25s ease, background 0.25s ease;
-    z-index: 0;
+    padding: 0.55rem 0.9rem;
+    border-radius: 999px;
+    background: ${nm.bg};
+    border: 1px solid ${nm.stroke};
+    box-shadow: ${nmOutTiny};
 
-    /* CSS 변수 초기화 */
-    --gradient-angle: 0deg;
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: ${nm.text};
+    transition: transform 0.15s ease, box-shadow 0.15s ease, color 0.15s ease;
 
     &:hover {
-      transform: scale(1.05);
-      background: rgba(255,255,255,0.18);
-      border-color: transparent;
-    }
-
-    /* 회전하는 gradient border */
-    &::before {
-      content: "";
-      position: absolute;
-      inset: -3px;
-      border-radius: 12px;
-      padding: 3px;
-      z-index: -1;
-
-
-
-      mask:
-        linear-gradient(#fff 0 0) content-box,
-        linear-gradient(#fff 0 0);
-      -webkit-mask:
-        linear-gradient(#fff 0 0) content-box,
-        linear-gradient(#fff 0 0);
-      mask-composite: exclude;
-      -webkit-mask-composite: xor;
-
-      opacity: 0;
-      transition: opacity 0.25s ease;
-    }
-
-    &:hover::before {
-      opacity: 1;
-      animation: ${rotateBorder} 4s linear infinite;
+      transform: translateY(-1px);
+      color: ${nm.accent};
+      box-shadow: 10px 10px 22px ${nm.shadowDark}, -10px -10px 22px ${nm.shadowLight};
     }
   }
 `;
 
-
-
-
-
-
 const SkillGroup = styled.div`
-  margin-bottom: 1.4rem;
+  margin-bottom: 1.2rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 `;
 
-const SkillGroupTitle = styled.h4`
-  font-size: 1rem;
-  margin-bottom: 0.6rem;
-  color: #fff;
-  font-weight: 600;
-`;
+/* (지금 UI에서는 안 쓰고 있어서 남겨둬도 되지만, 깔끔하게 주석/삭제 추천)
+const SkillGroupTitle = styled.h4``;
+*/
 
 const CareerList = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
   li {
-    margin-bottom: 1.2rem;
+    padding: 14px 14px;
+    border-radius: 16px;
+    border: 1px solid ${nm.stroke};
+    background: rgba(255, 255, 255, 0.35);
+    box-shadow: ${nmOutTiny};
+    margin-bottom: 12px;
+  }
 
-    .period {
-      font-size: 0.85rem;
-      color:  #fff;
-    }
+  li:last-child {
+    margin-bottom: 0;
+  }
 
-    strong {
-      display: block;
-      margin-top: 2px;
-      font-size: 1.05rem;
-    }
+  .period {
+    font-size: 0.85rem;
+    color: ${nm.muted};
+    margin: 0 0 4px;
+    font-weight: 700;
+  }
+
+  strong {
+    display: block;
+    margin-top: 2px;
+    font-size: 1.02rem;
+    color: ${nm.text};
+    line-height: 1.5;
   }
 `;
