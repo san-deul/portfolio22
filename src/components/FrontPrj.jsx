@@ -7,6 +7,8 @@ import img2 from "../assets/img/prj2.png";
 
 import { Section, SectionIn } from "./common/Section";
 import { Card } from "./common/Card";
+import HotelPrj from "./HotelPrj";
+import CosmeticPrj from "./CosmeticPrj";
 
 /* =========================
    ✅ Soft Neumorphism Tokens (Light only)
@@ -41,87 +43,9 @@ export default function FrontPrj() {
       <SectionIn>
         <SectionTitle>Frontend</SectionTitle>
 
-        <Cards>
-          <CustomCard>
-            <CardInner>
-              <CardImage>
-                <img src={img1} alt="프로젝트1" />
-              </CardImage>
-
-              <CardText>
-                <div className="cardTitle">
-                  개인 쇼핑몰 서비스를 가정하여 제작한 React 기반 프론트엔드 프로젝트입니다.
-                </div>
-                <p>React / React Router</p>
-                <p>Supabase</p>
-                <p>Vercel</p>
-              </CardText>
-
-              <Buttons>
-                <Button
-                  href="https://my-shopping-app-one.vercel.app/"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  보러가기
-                </Button>
-
-                <Button
-                  href="https://github.com/san-deul/my-shopping-app"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  GitHub
-                </Button>
-              </Buttons>
-
-              <Divv>
-                <p>현재 next.js + typescript 로 리팩토링 진행중입니다.</p>
-
-                {/* ✅ href 없는 버튼은 a 대신 button으로 */}
-                <ButtonAsBtn type="button">리팩토링 GitHub</ButtonAsBtn>
-              </Divv>
-            </CardInner>
-          </CustomCard>
-
-          <CustomCard>
-            <CardInner>
-              <CardImage>
-                <img src={img2} alt="프로젝트2" />
-              </CardImage>
-
-              <CardText>
-                <div className="cardTitle">
-                  호텔 예약 사이트를 가정하여 제작한 React 기반 프론트엔드 프로젝트입니다.
-                </div>
-                <p>React / React Router</p>
-                <p>React Query</p>
-                <p>Zustand</p>
-                <p>Tailwind</p>
-                <p>Supabase</p>
-                <p>Vercel</p>
-              </CardText>
-
-              <Buttons>
-                <Button
-                  href="https://my-hotel-app-beige.vercel.app/"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  보러가기
-                </Button>
-
-                <Button
-                  href="https://github.com/san-deul/my-hotel-app"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  GitHub
-                </Button>
-              </Buttons>
-            </CardInner>
-          </CustomCard>
-        </Cards>
+        <HotelPrj />
+        <CosmeticPrj />
+    
       </SectionIn>
 
       <SectionIn>{/* 필요하면 추가 섹션 */}</SectionIn>

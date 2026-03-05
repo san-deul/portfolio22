@@ -13,6 +13,7 @@ import { device } from "./styles/theme";
 import { ThemeProvider } from "styled-components";
 import Header from "./components/common/Header";
 
+
 function App() {
   return (
     <ThemeProvider theme={{ device }}>
@@ -22,6 +23,7 @@ function App() {
       
       
       <FrontPrj/>
+
       <BackPrj/>
       <PublPrj/>
       <Profile/>
