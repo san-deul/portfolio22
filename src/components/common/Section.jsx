@@ -8,28 +8,16 @@ import styled from "styled-components";
 
 export const Section = styled.section`
 
-   scroll-margin-top: 70px;
+  scroll-margin-top: 70px;
   width: 100%;
-  min-height: 100vh;
+  /* min-height: 100vh; */
   height:auto;
   position: relative;
-  //background: ${({ bg }) => bg || "transparent"};
-    
-  /*  
-    background: ${({ theme }) =>
-    theme === "light"
-      ? "linear-gradient(180deg, #f9f9fb 0%, #f1edff 100%)"
-      : "radial-gradient(circle at center,#5F4BD8 0%,#0B0730 100%)"};
-
-    */
-    //background:radial-gradient(circle at center, #5F4BD8 0%, #0B0730 100%);
-    //background:radial-gradient(circle at center, #5F4BD8 0%, #0B0730 100%);
-    //background:#e9eef6;;
 
     @media  ${(props) => props.theme.device.tablet},
             ${(props) => props.theme.device.mobile}{
         height:auto;
-        padding:50px 0;
+        padding:3.125rem 0;
       }
 
 
@@ -39,7 +27,7 @@ export const SectionIn = styled.div`
   width: 100%;
   max-width: 1280px;
   margin: 0 auto;
-  padding: ${({ padding }) => padding || "40px 20px"};
+  padding: ${({ padding }) => padding || "2.5rem 1.25rem"};
   background: ${({ bg }) => bg || "none"};
   box-sizing: border-box;
 

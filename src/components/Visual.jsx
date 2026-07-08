@@ -1,6 +1,10 @@
 import styled, { keyframes } from "styled-components";
 import { useEffect, useState } from "react";
-import { Section, SectionIn } from "./common/Section";
+import { Section } from "./common/Section";
+import { Card2 } from "./common/Card2";
+import { CardGlassmorphism } from "./common/CardGlassmorphism";
+import { ButtonGlassmorphism } from "./common/Button/ButtonGlassmorphism";
+import { BookOpenText, CodeXml, Handshake, MonitorSmartphone, Puzzle, UserRound } from "lucide-react";
 
 const nm = {
   bg: "#EEF2FA",                 // 예시 이미지처럼 살짝 보라/블루 톤
@@ -20,6 +24,8 @@ const nmOutTiny = `
   6px 6px 16px ${nm.shadowDark},
   -6px -6px 16px ${nm.shadowLight}
 `;
+
+
 export default function Visual({ theme }) {
 
 
@@ -29,6 +35,27 @@ export default function Visual({ theme }) {
     "완성도 높은 인터페이스를 만드는 개발자가 되겠습니다.",
 
   ];
+const iconStyle = {
+  size: 36,
+  strokeWidth: 2,
+};
+  const iconMap = {
+    icon1:<UserRound {...iconStyle} className="text-sky-500" />,    
+    icon2:<CodeXml {...iconStyle} className="text-emerald-500" />,  
+    icon3:<MonitorSmartphone />,
+    icon4:<Handshake />,
+    icon5:<Puzzle />,
+    icon6:<BookOpenText />,
+  }
+
+  const value = [
+    { icon: "icon1", title: "User Experience", con: "사용자의 입장에서 고민하며 직관적이고 편리한 인터페이스를 구현합니다." },
+    { icon: "icon2", title: "Publishing Quality", con: "시맨틱 마크업과 반응형 레이아웃으로 유지보수가 쉬운 UI를 구현합니다." },
+    { icon: "icon3", title: "Responsive Design", con: "다양한 디바이스에서도 일관된 사용자 경험을 제공합니다." },
+    { icon: "icon4", title: "Collaboration", con: "원활한 소통과 적극적인 의견 공유로 함께 성장하는 개발을 지향합니다." },
+    { icon: "icon5", title: "Problem Solving", con: "원인을 분석하고 다양한 방법을 시도하며 더 나은 해결책을 찾아갑니다." },
+    { icon: "icon6", title: "Continuous Learning", con: "새로운 기술을 꾸준히 익히고 프로젝트에 적용하며 성장합니다." },
+  ]
 
   const [displayText, setDisplayText] = useState("");
   const [line, setLine] = useState(0);
@@ -42,76 +69,100 @@ export default function Visual({ theme }) {
         i++;
         if (i === introText[line].length) {
           clearInterval(timer);
-          setTimeout(() => { 
-             setDisplayText("");
-          setLine((prev) => prev + 1);
-        },700);
-      }
+          setTimeout(() => {
+            setDisplayText("");
+            setLine((prev) => prev + 1);
+          }, 700);
+        }
       }, 70);
-  return () => clearInterval(timer);
-}
+      return () => clearInterval(timer);
+    }
   }, [line]);
 
-return (
+  return (
+    <>
+      <VisualSection id="visual">
+        <SectionIn>
+          <EditorFrame $mode={theme}>
+            <TopBar>
+              <Dot color="#ff5f56" />
+              <Dot color="#ffbd2e" />
+              <Dot color="#27c93f" />
+            </TopBar>
+            <ConArea>
+              <LeftArea $mode={theme}>
+                {introText.slice(0, line).map((t, i) => (
+                  <Line key={i}>{t}</Line>
+                ))}
+                {line < introText.length && <Line>{displayText}|</Line>}
+              </LeftArea>
+              <RightArea>
+                <div> 💎 What I Value</div>
+                <ValueArea>
+                  {value.map((item, i) => (
+                    <ValueDiv key={i}>
+                      <Icon>{iconMap[item.icon]}</Icon>
+                      <p>{item.title}</p>
+                      <p>{item.con}</p>
+                    </ValueDiv>
+                  ))}
+                </ValueArea>
+              </RightArea>
+            </ConArea>
+          </EditorFrame>
+        </SectionIn>
+      </VisualSection>
 
-  <VisualSection id="visual">
-    <SectionIn>
-      <EditorFrame $mode={theme}>
-        <TopBar>
-          <Dot color="#ff5f56" />
-          <Dot color="#ffbd2e" />
-          <Dot color="#27c93f" />
+      {/*
+      <VisualSection id="visual">
+        <SectionIn>
+          <EditorFrame $mode={theme}>
+            <TopBar>
+              <Dot color="#ff5f56" />
+              <Dot color="#ffbd2e" />
+              <Dot color="#27c93f" />
+            </TopBar>
+            <Content>
+              <LeftArea $mode={theme}>
+                {introText.slice(0, line).map((t, i) => (
+                  <Line key={i}>{t}</Line>
+                ))}
+                {line < introText.length && <Line>{displayText}|</Line>}
+              </LeftArea>
+              <RightArea></RightArea>
+            </Content>
+          </EditorFrame>
+        </SectionIn>
 
-        </TopBar>
-        <CodeArea $mode={theme}>
-          {introText.slice(0, line).map((t, i) => (
-            <Line key={i}>{t}</Line>
-          ))}
-          {line < introText.length && <Line>{displayText}|</Line>}
-        </CodeArea>
-      </EditorFrame>
-    </SectionIn>
-
-  </VisualSection>
-
-);
+      </VisualSection>
+      */}
+    </>
+  );
 }
 
 /* ========================= styled ========================= */
 
 
-const VisualWrap1 = styled.section`
-  height: 100vh;
-
-  /*
-  background: ${({ theme }) =>
-    theme === "light"
-      ? "linear-gradient(180deg, #f9f9fb 0%, #f1edff 100%)"
-      : "radial-gradient(circle at center, rgba(80, 40, 120, 0.3), rgba(10, 10, 30, 1))"};
-*/  transition: background 0.4s ease;
-`;
-
 const VisualSection = styled(Section)`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: ${nm.bg};
- 
+  margin-top:100px;
+`
+
+const SectionIn = styled(Card2)`
+  width:100%;
+  max-width: 1280px;
+  padding:0;
+  margin:0 auto;
+
 `
 
 
 const EditorFrame = styled.div`
   width: 100%;
-  border-radius: 26px;
-  overflow: hidden;
-  background: ${nm.bg};
-  box-shadow: ${nmOutSoft};
-  border: 1px solid ${nm.stroke};
 `;
 
 
 const TopBar = styled.div`
-   height: 44px;
+  height: 44px;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -132,19 +183,19 @@ const Dot = styled.div`
   background: ${({ color }) => color};
 `;
 
+const Content = styled.div`
+  display: flex;
+`
+const ConArea = styled.div`
+  display: flex;
+  padding:30px;
+`
 
-
-const CodeArea = styled.pre`
-     margin: 18px;
-     height:12rem;
+const LeftArea = styled.pre`
+  width:50%;
+  margin: 18px;
+  height:12rem;
   padding: 2rem;
-  //background:blue;
-  //background: rgba(255,255,255,0.35); /* ✅ 예시처럼 살짝 밝게 */
-  //border: 1px solid rgba(255,255,255,0.55);
-  //border-radius: 18px;
-
-  /* ✅ 패인 느낌 X, 대신 아주 은은한 out */
-  //box-shadow: ${nmOutTiny};
 
   color: rgba(92, 99, 114, 0.75);
   font-size: 1.25rem;
@@ -158,3 +209,56 @@ const CodeArea = styled.pre`
 const Line = styled.div`
   color: inherit;
 `;
+
+
+const RightArea = styled.div`
+  width:50%;
+  >div{
+    color:var(--blue-main);
+    font-size: var(--font-size-lg);
+    font-weight:${({ theme }) => theme.fontWeight.bold};;
+    margin-bottom:16px;
+  }
+
+`
+const ValueArea = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap:12px;
+`
+
+const ValueDiv = styled.div`
+  background:#ffffff8d;
+  width:31%;
+  padding:10px 0;
+
+  border-radius: 16px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+
+  
+  p:first-of-type{
+    font-size:1.0625rem;
+    color:#000;
+    font-weight:${({ theme }) => theme.fontWeight.bold};
+    font-size:var(--font-size-base);
+    margin:12px 8px;
+  }
+  p:last-of-type{
+    font-size: var(--font-size-sm);
+    color:var(--gray-main);
+    word-break: keep-all;
+  }
+`
+
+
+  
+
+
+
+const Icon = styled.div`
+`

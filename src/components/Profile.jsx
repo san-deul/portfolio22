@@ -1,7 +1,17 @@
 import { Card } from "./common/Card";
 import { Section, SectionIn } from "./common/Section";
-import { Title } from "./common/Title";
+import { Title } from "./common/MainTitle";
 import styled from "styled-components";
+import { Card2 } from "./common/Card2";
+import { Title1 } from "./common/Title1";
+import { ButtonCircle } from "./common/Button/ButtonCircle";
+import { Tag1 } from "./common/tag/tag1";
+import { TbFlag2 } from "react-icons/tb";
+import { Tag2 } from "./common/tag/Tag2";
+import { FaEnvelope, FaGithub, FaPhone } from "react-icons/fa";
+import { Tag3 } from "./common/tag/Tag3";
+import { Tag4 } from "./common/tag/Tag4";
+import { Tag5 } from "./common/tag/Tag5";
 
 /* =========================
    ✅ Soft Neumorphism Tokens (Light only)
@@ -17,8 +27,8 @@ const nm = {
 };
 
 const nmOutSoft = `
-  10px 10px 26px ${nm.shadowDark},
-  -10px -10px 26px ${nm.shadowLight}
+  4px 4px 6px ${nm.shadowDark},
+  -4px -4px 6px ${nm.shadowLight}
 `;
 
 const nmOutTiny = `
@@ -27,135 +37,201 @@ const nmOutTiny = `
 `;
 
 const skills = {
-  frontend: ["HTML", "CSS", "JavaScript", "React", "TypeScript", "Next.js"],
-  backend: ["Node.js", "Express", "JAVA", "MySQL", "SpringBoot", "Oracle"],
-  tools: ["Git/GitHub", "Supabase"],
+  Frontend: ["HTML", "CSS", "JavaScript", "React", "TypeScript", "Next.js"],
+  Backend: ["Node.js", "Express", "JAVA", "SpringBoot",],
+  Database: ["Oracle", "MySQL", "Supabase",],
+  Tools: ["Git", "GitHub", "VS Code", "Photoshop", "Figma", "Vercel", "Netlify"],
 };
 
 const experience = [
   { period: "2021. 09 ~ 2022. 03", con: "[디지털디자인] 모바일 웹 & 앱디자인(웹퍼블리셔, jQuery, Vue.js)-A" },
   { period: "2022. 07 ~ 2023. 11", con: "웹퍼블리셔 근무" },
   { period: "2023. 12 ~ 2024. 06", con: "클라우드 활용 JAVA 개발자 양성과정" },
-  { period: "2025. 04 ~ 12", con: "백엔드 개발자 근무" },
+  { period: "2025. 04 ~ 12", con: "씨드림 코어 백엔드 개발자 근무" },
+  { period: "2026. 04 ~ 06", con: "척척밥상 프론트엔드 " },
 ];
+
+const iconMap = {
+  mail:<FaEnvelope />,
+  phone:<FaPhone/>,
+  github: <FaGithub />,
+  
+}
+
+const profileData = [
+  { icon: "mail", con: "bliss0208@naver.com" , link:"null"},
+  { icon: "phone", con: "010 4180 3488" , link:"null"},
+  { icon: "github", con: "https://github.com/san-deul" , link:"https://github.com/san-deul"}
+]
 
 export default function Profile() {
   return (
-    <AboutSection id="about">
-      <SectionTitle>About Me</SectionTitle>
+    <>
+      <Section id="about">
+        <Title1>About Me</Title1>
+        <ProfileSectionIn>
 
-      <ProfileSectionIn>
-        {/* ================= Profile Card ================= */}
-        <ProfileCard>
-          <ProfileInfo>
-            <SubTitle>Profile</SubTitle>
+          <AboutCard1>
+            <ProfileCard>
+              <ProfileTop>
+                <ProfImg $noHover></ProfImg>
+                <p>강산들</p>
+                <p>Frontend Developer</p>
+                <p>gggg</p>
+              </ProfileTop>
+              <ProfBottom>
+                {profileData.map((item,i) =>(
+                  <div key={i}>
+                    <p>{iconMap[item.icon]}</p>
+                    <p>{item.con}</p>
+                  </div>
+                ))}
+                
+              </ProfBottom>
+            </ProfileCard>
+          </AboutCard1>
 
-            <ProfileArea>
-              <Row>
-                <ProfileTitle>Name</ProfileTitle>
-                <ProfileCon>강산들</ProfileCon>
-              </Row>
-              <Row>
-                <ProfileTitle>Birth</ProfileTitle>
-                <ProfileCon>1994. 02. 08</ProfileCon>
-              </Row>
-              <Row>
-                <ProfileTitle>Phone</ProfileTitle>
-                <ProfileCon>010. 4180. 3488</ProfileCon>
-              </Row>
-              <Row>
-                <ProfileTitle>E-mail</ProfileTitle>
-                <ProfileCon>bliss0208@naver.com</ProfileCon>
-              </Row>
-              <Row>
-                <ProfileTitle>GitHub</ProfileTitle>
-                <ProfileCon>
-                  <a href="https://github.com/san-deul" target="_blank" rel="noreferrer">
-                    github.com/san-deul
-                  </a>
-                </ProfileCon>
-              </Row>
-            </ProfileArea>
-          </ProfileInfo>
-        </ProfileCard>
+          <AboutCard>
+            <ProfileCon>
+              <ProfTitle>
+                <span></span>
+                <span>🛠️ How I Work</span>
+              </ProfTitle>
+              <p>
+                '잘 동작하는 코드'보다
+                '오래 유지할 수 있는 구조'를 만드는 것에 더 큰 가치를 둡니다.<br /><br />
 
-        {/* ================= Skills Card ================= */}
-        <ProfileCard>
-          <SubTitle>Skills</SubTitle>
+                프로젝트를 완성하는 것보다,
+                완성된 프로젝트를 다시 돌아보며 더 나은 구조를 고민하고
+                리팩토링하는 과정에서 가장 큰 재미를 느낍니다.<br /><br />
 
-          <SkillGroup>
-            <SkillList>
-              {skills.frontend.map((s, i) => (
-                <li key={i}>{s}</li>
+                컴포넌트를 재사용 가능한 형태로 설계하고,
+                유지보수성과 사용자 경험을 함께 고려하며
+                시간이 지나도 읽기 쉽고 확장 가능한 코드를 만드는 것을 지향합니다.<br /><br />
+
+              </p>
+            </ProfileCon>
+            <ProfileCon>
+              <ProfTitle>
+                <span>⚡</span>
+                <span>Skills</span>
+              </ProfTitle>
+              
+              {Object.entries(skills).map(([category, list]) => (
+                <SkillGroup key={category}>
+                  <p>{category}</p>
+                  <SkillList>
+                    {list.map((s, i) => (
+                      <Skill key={i}>{s}</Skill>
+                    ))}
+                  </SkillList>
+                </SkillGroup>
               ))}
-            </SkillList>
-          </SkillGroup>
+            </ProfileCon>
 
-          <SkillGroup>
-            <SkillList>
-              {skills.backend.map((s, i) => (
-                <li key={i}>{s}</li>
-              ))}
-            </SkillList>
-          </SkillGroup>
+          </AboutCard>
 
-          <SkillGroup>
-            <SkillList>
-              {skills.tools.map((s, i) => (
-                <li key={i}>{s}</li>
-              ))}
-            </SkillList>
-          </SkillGroup>
-        </ProfileCard>
+        </ProfileSectionIn>
+      </Section>
 
-        {/* ================= Experience Card ================= */}
-        <ProfileCard>
-          <SubTitle>Experience</SubTitle>
-
-          <CareerList>
-            {experience.map((m, i) => (
-              <li key={i}>
-                <p className="period">{m.period}</p>
-                <strong>{m.con}</strong>
-              </li>
-            ))}
-          </CareerList>
-        </ProfileCard>
-      </ProfileSectionIn>
-    </AboutSection>
+    </>
   );
 }
 
-/* ========================================================= */
+
 /* ========================= Styled ========================= */
-/* ========================================================= */
 
-const AboutSection = styled(Section)`
-  background: ${nm.bg};
-`;
 
-const SectionTitle = styled(Title)`
-  color: ${nm.text};
-`;
 
-const ProfileSectionIn = styled(SectionIn)`
+
+const ProfileSectionIn = styled(Card2)`
   display: flex;
-  flex-direction: column;
+  align-items: stretch; 
   gap: 18px;
   width: 100%;
   transition: 0.25s ease;
+  max-width: 1280px;
+  margin:0 auto;
 `;
 
-const ProfileCard = styled(Card)`
-  width: 100%;
-  margin-bottom: 0;
-  padding: 26px 22px;
+const AboutCard = styled.div`
+  gap:16px;
+  width:50%;
+`
+const AboutCard1 = styled(AboutCard)`
+  flex: 0 0 38%;
+  min-width: 0;
 
-  background: ${nm.bg};
-  border-radius: 22px;
-  border: 1px solid ${nm.stroke};
-  box-shadow: ${nmOutSoft};
+`
+const AboutCard2 = styled(AboutCard)``
+
+const ProfileCard = styled.div`
+  height:100%;
+  background:#fff;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  border-radius:16px;
+  padding:0 20px;
+  >div{padding:16px;}
 `;
+
+const ProfileTop = styled.div`
+  width: 80%;
+  border-bottom:1px solid var(--gray-line);
+  text-align: center;
+  font-size:var(--font-size-lg);
+  font-weight:${({ theme }) => theme.fontWeight.semiBold};;
+  p:nth-child(1){
+
+  }
+  p:nth-child(2){
+    margin-top:8px;
+    color:#000;
+    font-weight:${({ theme }) => theme.fontWeight.bold};;
+  }
+  p:nth-child(3){
+    font-size:var(--font-size-base);
+    color:var(--blue-main);
+    margin:4px 0px 6px;
+  }
+  p:nth-child(4){
+    font-size:var(--font-size-sm);
+    color:var(--gray-main);
+    font-weight:${({ theme }) => theme.fontWeight.medium};;
+  }
+`
+
+const ProfImg = styled(ButtonCircle)`
+  width:6.25rem;
+  height:6.25rem;
+  margin:0 auto;
+
+`
+
+const ProfBottom = styled.div`
+  div{
+    display: flex;
+    gap:1rem;
+    font-size:var(--font-size-base);
+    color:var(--gray-main);
+    padding:6px 0px;
+  }
+
+`
+const Icon = styled.div`
+
+`
+
+const ProfTitle = styled.div`
+  padding:14px 0;
+  span{
+    color:var(--blue-main);
+    font-size: var(--font-size-lg);
+    font-weight:${({ theme }) => theme.fontWeight.bold};;
+  }
+`
 
 const SubTitle = styled.h3`
   font-size: 1.25rem;
@@ -185,25 +261,18 @@ const ProfileTitle = styled.div`
   width: 25%;
   font-weight: 800;
   color: ${nm.text};
+
 `;
+
 
 const ProfileCon = styled.div`
-  width: 75%;
-  word-break: break-all;
-  color: ${nm.muted};
 
-  a {
-    color: ${nm.accent};
-    text-decoration: none;
-    font-weight: 800;
-  }
-
-  a:hover {
-    text-decoration: underline;
+  p{
+        word-break: keep-all;
   }
 `;
 
-/* ✅ Skill pill: 패임/글래스 제거 → soft out */
+
 const SkillList = styled.ul`
   display: flex;
   flex-wrap: wrap;
@@ -232,17 +301,24 @@ const SkillList = styled.ul`
   }
 `;
 
+const Skill = styled(Tag4)`
+  
+`
+
 const SkillGroup = styled.div`
-  margin-bottom: 1.2rem;
+
+  p{
+    color:#000;
+    font-size: var(--font-size-base);
+    font-weight:${({ theme }) => theme.fontWeight.medium};;
+  }
 
   &:last-child {
     margin-bottom: 0;
   }
 `;
 
-/* (지금 UI에서는 안 쓰고 있어서 남겨둬도 되지만, 깔끔하게 주석/삭제 추천)
-const SkillGroupTitle = styled.h4``;
-*/
+
 
 const CareerList = styled.ul`
   list-style: none;

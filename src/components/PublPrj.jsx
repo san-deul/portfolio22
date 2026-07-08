@@ -6,32 +6,15 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 import { Section, SectionIn } from "./common/Section";
-import { Title } from "./common/Title";
+import { Title } from "./common/MainTitle";
 import { Lists } from "../data/pubLists";
 import { size } from "../styles/theme";
+import { Title1 } from "./common/Title1";
+import { Card2 } from "./common/Card2";
+import { ButtonCircle } from "./common/Button/ButtonCircle";
+import { ChevronLeft, ChevronRight, MoveUpRight } from "lucide-react";
+import { ButtonGlassmorphism } from "./common/Button/ButtonGlassmorphism";
 
-/* =========================
-   ✅ Soft Neumorphism Tokens (Light only)
-========================= */
-const nm = {
-  bg: "#EEF2FA",
-  text: "#2b3445",
-  muted: "#7b8797",
-  accent: "#4f7cff",
-  shadowDark: "rgba(120, 135, 160, 0.18)",
-  shadowLight: "rgba(255, 255, 255, 0.95)",
-  stroke: "rgba(255,255,255,0.65)",
-};
-
-const nmOutSoft = `
-  10px 10px 26px ${nm.shadowDark},
-  -10px -10px 26px ${nm.shadowLight}
-`;
-
-const nmOutTiny = `
-  6px 6px 16px ${nm.shadowDark},
-  -6px -6px 16px ${nm.shadowLight}
-`;
 
 export default function PublPrj() {
   const mobile = 0;
@@ -39,14 +22,14 @@ export default function PublPrj() {
   const laptop = parseInt(size.laptop, 10);
 
   return (
-    <PublSection id="publishing">
-      <SectionTitle>Publishing</SectionTitle>
 
+    <Section id="publishing" >
       <SectionIn>
+        <Title1>Publishing</Title1>
         <SliderWrap>
           {/* ✅ Swiper 밖에 버튼 배치 */}
           <NavButton id="custom-prev" type="button" aria-label="Prev">
-            <span className="material-symbols-outlined">chevron_left</span>
+            <ChevronLeft />
           </NavButton>
 
           <StyledSwiper
@@ -80,22 +63,27 @@ export default function PublPrj() {
 
                     {!list.closed && (
                       <IconLink href={list.link} target="_blank" rel="noopener noreferrer">
-                        <IconBox>
-                          <Icon>
-                            <span className="material-symbols-outlined">arrow_outward</span>
-                          </Icon>
-                        </IconBox>
+                        <Icon>
+                          <MoveUpRight />
+                        </Icon>
+
                       </IconLink>
                     )}
                   </ImgBox>
 
                   <Content>
                     <p className="name">{list.title}</p>
-                    <p className="desc">{list.desc}</p>
+                    <div className="desc">
+
+                      {list.desc.map((item, i) => (
+                        <p key={i}>{item}</p>
+                      ))}
+
+                    </div>
 
                     <TagUl>
                       {list.tags?.map((t, i) => (
-                        <TagLi key={i} $color={t.color}>
+                        <TagLi key={i}  $txtColor={t.txtColor} $bgColor={t.bgColor}>
                           {t.text}
                         </TagLi>
                       ))}
@@ -107,116 +95,82 @@ export default function PublPrj() {
           </StyledSwiper>
 
           <NavButton id="custom-next" type="button" aria-label="Next">
-            <span className="material-symbols-outlined">chevron_right</span>
+            <ChevronRight />
           </NavButton>
         </SliderWrap>
       </SectionIn>
-    </PublSection>
+    </Section>
   );
 }
 
 /* ====================== Styled Components ====================== */
-
-const PublSection = styled(Section)`
-  background: ${nm.bg};
-`;
-
-const SectionTitle = styled(Title)`
-  color: ${nm.text};
-`;
 
 const SliderWrap = styled.div`
   position: relative;
   width: 100%;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 0.625rem;
 `;
 
-/* ✅ 뉴모피즘 네비 버튼(패임X, 은은 out) */
-const NavButton = styled.button`
-  width: 52px;
-  height: 52px;
-  border: 1px solid ${nm.stroke};
-  background: ${nm.bg};
-  border-radius: 999px;
-  cursor: pointer;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
 
-  box-shadow: ${nmOutTiny};
-  transition: transform 0.15s ease, box-shadow 0.15s ease, color 0.15s ease;
+const NavButton = styled(ButtonCircle)`
+  width:3.25rem;
+  height:3.25rem;
+`
 
-  z-index: 50;
 
-  span {
-    font-size: 28px;
-    color: ${nm.text};
-  }
-
-  &:hover {
-    transform: translateY(-1px);
-    box-shadow: 10px 10px 22px ${nm.shadowDark}, -10px -10px 22px ${nm.shadowLight};
-    span {
-      color: ${nm.accent};
-    }
-  }
-
-  &:active {
-    transform: translateY(0);
-    box-shadow: 3px 3px 10px ${nm.shadowDark}, -3px -3px 10px ${nm.shadowLight};
-  }
-
-  @media (max-width: ${size.laptop}) {
-    display: none;
-  }
-`;
 
 const StyledSwiper = styled(Swiper)`
   width: 100%;
-  padding: 46px 0;
+  padding: 2.875rem 0.75rem;
 
-  /* ✅ 페이지네이션도 라이트 톤 */
   .swiper-pagination-bullet {
-    background: rgba(120, 135, 160, 0.25);
+    position: relative;
+    background: var(--blue-sub);
     opacity: 1;
-    width: 10px;
-    height: 10px;
+    width: 0.625rem;
+    height: 0.625rem;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    transition: width 0.35s ease;
+  }
+
+  /* 그라데이션 레이어를 미리 깔아두고 opacity로만 전환 */
+  .swiper-pagination-bullet::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: ${({ theme }) => theme.gradients.blue.css};
+    opacity: 0;
+    transition: opacity 0.35s ease;
   }
 
   .swiper-pagination-bullet-active {
-    background: ${nm.accent};
-    width: 24px;
-    border-radius: 12px;
+    width: 1.5rem;
+  }
+
+  .swiper-pagination-bullet-active::after {
+    opacity: 1;
   }
 `;
 
-/* ✅ 카드: glass 제거 → soft neumorphism */
-const NeumCard = styled.div`
-  background: ${nm.bg};
-  border-radius: 22px;
-  border: 1px solid ${nm.stroke};
-  box-shadow: ${nmOutSoft};
-  overflow: hidden;
-  padding: 12px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
 
-  &:hover {
-    transform: translateY(-4px);
-    box-shadow: 14px 14px 30px ${nm.shadowDark}, -14px -14px 30px ${nm.shadowLight};
-  }
-`;
+const NeumCard = styled(Card2)`
+  
+`
+
+
+
 
 const ImgBox = styled.div`
   position: relative;
   width: 100%;
-  height: 220px;
+  height: 13.75rem;
   overflow: hidden;
   border-radius: 16px;
-  border: 1px solid ${nm.stroke};
-  box-shadow: ${nmOutTiny};
+ 
 
   img {
     width: 100%;
@@ -226,64 +180,44 @@ const ImgBox = styled.div`
   }
 `;
 
-const IconBox = styled.div`
+const Icon = styled(ButtonGlassmorphism)`
   position: absolute;
-  bottom: -0.375rem;
-  right: -0.375rem;
-  width: 6rem;
-  height: 6rem;
-  border-top-left-radius: 50%;
-  transition: transform 0.2s ease;
-`;
+  bottom: 0.25rem;
+  right: 0.25rem;
 
-const Icon = styled.div`
-  position: absolute;
-  inset: 0.625rem;
+  width: 4.5rem;
+  height: 4.5rem;
 
-  background: ${nm.bg};
-  border-radius: 50%;
-  border: 1px solid ${nm.stroke};
- // box-shadow: ${nmOutTiny};
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  span {
-    font-size: 1.5rem;
-    color: ${nm.text};
-  }
-`;
+`
 
 const IconLink = styled.a`
   display: inline-block;
 
-  &:hover ${IconBox} {
-    transform: scale(1.06);
-  }
-
   &:hover ${Icon} span {
-    color: ${nm.accent};
+  
   }
 `;
 
 const Content = styled.div`
-  padding: 14px 6px 6px;
-  color: ${nm.text};
+  padding: 0.875rem 0.375rem 0.375rem;
 
   p {
-    margin-bottom: 10px;
+    margin-bottom: 0.625rem;
   }
 
   p.name {
     font-weight: 800;
-    font-size: 1.05rem;
-    margin-top: 4px;
+    font-size: var(--font-size-lg);
+    margin-top: 0.25rem;
   }
 
-  p.desc {
-    color: ${nm.muted};
-    line-height: 1.55;
+  div.desc {
+
+    font-size:var(--font-size-base);
+    margin: 1rem 0.8rem 1rem;
+    p{
+      line-height: 80%;
+    }
   }
 `;
 
@@ -291,21 +225,20 @@ const TagUl = styled.ul`
   display: flex;
   gap: 0.5rem;
   flex-wrap: wrap;
-  margin: 8px 0 0;
+  margin: 0.5rem 0 0;
   padding: 0;
   list-style: none;
 `;
 
 const TagLi = styled.li`
-  background: ${(p) => p.$color};
+  background: ${(p) => p.$bgColor};
   padding: 0.4rem 0.6rem;
   border-radius: 999px;
   font-size: 12px;
   font-weight: 800;
-  color: #333;
+  color:  ${(p) => p.$txtColor};
 `;
 
-/* ✅ 폐쇄 오버레이는 그대로(이미지 위라 뉴모피즘이랑 충돌 없음) */
 const ClosedOverlay = styled.div`
   position: absolute;
   inset: 0;

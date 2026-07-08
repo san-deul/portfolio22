@@ -1,7 +1,7 @@
 // Updated Profile component styled similar to reference image
 import styled from "styled-components";
 import { Section, SectionIn } from "./common/Section";
-import { Title } from "./common/Title";
+import { Title } from "./common/MainTitle";
 
 export default function Profilesssss() {
   const skills = [

@@ -1,5 +1,19 @@
 import { createGlobalStyle } from "styled-components";
 
+import PretendardThin from "../assets/fonts/pretendard/Pretendard-Thin.subset.woff2";
+import PretendardExtraLight from "../assets/fonts/pretendard/Pretendard-ExtraLight.subset.woff2";
+import PretendardLight from "../assets/fonts/pretendard/Pretendard-Light.subset.woff2";
+import PretendardRegular from "../assets/fonts/pretendard/Pretendard-Regular.subset.woff2";
+import PretendardMedium from "../assets/fonts/pretendard/Pretendard-Medium.subset.woff2";
+import PretendardSemiBold from "../assets/fonts/pretendard/Pretendard-SemiBold.subset.woff2";
+import PretendardBold from "../assets/fonts/pretendard/Pretendard-Bold.subset.woff2";
+import PretendardExtraBold from "../assets/fonts/pretendard/Pretendard-ExtraBold.subset.woff2";
+import PretendardBlack from "../assets/fonts/pretendard/Pretendard-Black.subset.woff2";
+
+import { device } from "./theme"
+
+
+
 const GlobalStyle = createGlobalStyle`
   /* === Tailwind Directives === */
   @tailwind base;
@@ -75,92 +89,142 @@ const GlobalStyle = createGlobalStyle`
     text-decoration: none;
   }
 
-  /* === Font === */
-  @import url('https://webfontworld.github.io/pretendard/Pretendard.css');
+    /* === Font Face === */
+  @font-face {
+    font-family: 'Pretendard';
+    src: url(${PretendardThin}) format('woff2');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Pretendard';
+    src: url(${PretendardExtraLight}) format('woff2');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Pretendard';
+    src: url(${PretendardLight}) format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Pretendard';
+    src: url(${PretendardRegular}) format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Pretendard';
+    src: url(${PretendardMedium}) format('woff2');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Pretendard';
+    src: url(${PretendardSemiBold}) format('woff2');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Pretendard';
+    src: url(${PretendardBold}) format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Pretendard';
+    src: url(${PretendardExtraBold}) format('woff2');
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Pretendard';
+    src: url(${PretendardBlack}) format('woff2');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+  }
+
+
+
+  :root {
+    --mainfont: 'Pretendard';
+    
+    --gray-main:#54575c;
+    --gray-sub:#7b8797;
+    
+    --gray-line:rgba(120, 135, 160, 0.18);
+
+    --blue-main:#185fa5;
+    --blue-sub:#d4e5f5;
+    --blue-sub2:#619dc0d5;;
+
+
+    /* 폰트 사이즈 */ 
+    --font-size-xs: 0.75rem;   /* 12px */
+    --font-size-sm: 0.875rem;  /* 14px */
+    --font-size-base: 1rem;    /* 16px */
+    --font-size-lg: 1.125rem;  /* 18px */
+    --font-size-xl: 1.5rem;    /* 24px */
+    --font-size-2xl: 2rem;     /* 32px */
+    
+  }
 
   * {
     margin: 0;
     padding: 0;
     font-family: var(--mainfont);
-        box-sizing: border-box;
+    box-sizing: border-box;
   }
 
-  :root {
-    --mainfont: 'Pretendard';
-
-    /* ==== DARK MODE ==== */
-    
-    /*
-    --clr-bg-dark: radial-gradient(circle at center, #5F4BD8 0%, #0B0730 100%);
-    --clr-card-dark: rgba(255, 255, 255, 0.08);
-    --clr-border-dark: rgba(255, 255, 255, 0.15);
-    --clr-text-dark: #ffffff;
-    --clr-muted-dark: #cccccc;
-    --clr-glow-dark: rgba(120, 200, 255, 0.4);
-*/
-    /* ==== LIGHT MODE ==== */
-    
-    /*
-    --clr-bg-light: radial-gradient(circle at center, #edc0bf 0, #c4caef 100%);;
-    --clr-bg-light: radial-gradient(circle at center,rgba(236, 233, 252, 1) 0%, #8b86b6ff 100%);
-    --clr-card-light: rgba(255, 255, 255, 0.85);
-    --clr-border-light: rgba(0, 0, 0, 0.1);
-    --clr-text-light: #111111;
-    --clr-muted-light: #333333;
-    --clr-glow-light: rgba(150, 180, 255, 0.5);
-    */
+  html{
+    font-size:16px;
+  }
+  
+  @media ${device.laptop} {
+    html {
+      font-size: 15px;
+    }
   }
 
-  /* === Default: dark === */
-  /*
-  [data-theme="dark"] {
-    --clr-bg: var(--clr-bg-dark);
-    --clr-card: var(--clr-card-dark);
-    --clr-border: var(--clr-border-dark);
-    --clr-text: var(--clr-text-dark);
-    --clr-muted: var(--clr-muted-dark);
-    --clr-glow: var(--clr-glow-dark);
+  @media ${device.tablet} {
+    html {
+      font-size: 14px;
+    }
   }
-*/
-  /* === Light === */
-  /*
-  [data-theme="light"] {
-    --clr-bg: var(--clr-bg-light);
-    --clr-card: var(--clr-card-light);
-    --clr-border: var(--clr-border-light);
-    --clr-text: var(--clr-text-light);
-    --clr-muted: var(--clr-muted-light);
-    --clr-glow: var(--clr-glow-light);
-  }*/
+
+  @media ${device.mobile} {
+    html {
+      font-size: 13px;
+    }
+  }
 
   /* === Global Body === */
   body {
-    
-    //background: var(--clr-bg);
-    //color: var(--clr-text);
-    //transition: background 0.6s ease, color 0.4s ease;
-    
-    
-    //background-image: url(https://i.postimg.cc/RFqSM2rc/bg.jpg);
-   // background-size: contain;
-   //background: linear-gradient(45deg, #FC466B, #3F5EFB);
-    //background: radial-gradient(circle at center,#5F4BD8 0%,#0B0730 100%);
-
-
-
-
+  
   }
 
   #root {
     width: 100%;
     //background: var(--clr-bg);
     min-height: 100vh;
-    background:#EEF2FA;
-  }
+   background:#EEF2FA;
+    /* background:#000; */
+   }
 
   .section {
     width: 100%;
-    height: 100vh;
+    /*height: 100vh;*/
+    height:auto;
     background:skyblue
   }
 

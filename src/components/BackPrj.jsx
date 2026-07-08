@@ -1,11 +1,16 @@
 import { useState, useEffect } from "react";
 import styled, { useTheme } from "styled-components";
 import { Section, SectionIn } from "./common/Section";
-import { Title } from "./common/Title";
+import { Title } from "./common/MainTitle";
 import { Card } from "./common/Card";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+import { Title1 } from "./common/Title1";
+import { Card2 } from "./common/Card2";
+import { ButtonGlassmorphism } from "./common/Button/ButtonGlassmorphism";
+import { CardGlassmorphism } from "./common/CardGlassmorphism";
+import { Building2 } from "lucide-react";
 
 /* =========================
    ✅ Soft Neumorphism Tokens (Light only)
@@ -131,28 +136,26 @@ export default function BackPrj() {
     },
   };
 
-  return (
-    <BackSection id="backend">
-      <SectionTitle>BackEnd</SectionTitle>
 
+
+  return (
+    <Section id="backend">
+
+      <Title1>BackEnd</Title1>
+      {/*
       <BackSummaryIn>
         <ul>
           <li>
-            <strong>근무 기간</strong> : 2025.04 - 2025.12
-          </li>
-          <li>
-            PHP 5.5 기반 레거시 쇼핑몰과 <br />
-            Node.js / Express 기반 서버를 함께 운영하며,
-            <br />
-            <br />
-            기존 시스템의 안정성을 유지하면서
-            <br />
-            데이터 동기화, 자동화, 외부 연동 기능을
-            <br />
-            점진적으로 개선하는 역할을 담당했습니다.
+            <p>
+              PHP 5.5 기반 레거시 쇼핑몰과 Node.js 서버를 함께 운영하며,<br/>
+              정산·크롤링·외부 API 연동 등 다양한 프로젝트를 통해 <br/>
+              운영 리스크를 낮추고 반복 업무를 줄였습니다.
+            </p>
           </li>
         </ul>
       </BackSummaryIn>
+        굳이..
+        */}
 
       <BackSectionIn>
         {/* LEFT 영역 */}
@@ -174,13 +177,12 @@ export default function BackPrj() {
           ) : (
             <ul>
               {projects.map((p) => (
-                <li
+                <ListItem
                   key={p.id}
-                  className={active === p.id ? "active" : ""}
-                  onClick={() => setActive(p.id)}
-                >
+                  $active={active === p.id}
+                  onClick={() => setActive(p.id)}>
                   {p.title}
-                </li>
+                </ListItem>
               ))}
             </ul>
           )}
@@ -214,27 +216,24 @@ export default function BackPrj() {
           </div>
         </RightPanel>
       </BackSectionIn>
-    </BackSection>
+    </Section>
   );
 }
 
-/* =========================================================
-   styled-components (Soft Neumorphism, Light only)
-========================================================= */
 
 const BackSection = styled(Section)`
   background: ${nm.bg};
   height: auto;
 `;
 
-const SectionTitle = styled(Title)`
-  color: ${nm.text};
-`;
+const BackSummaryIn = styled(Card2)`
 
-const BackSummaryIn = styled(SectionIn)`
+  width:100%;
+  max-width:800px;
+  margin:0 auto;
+  text-align: center;
   color: ${nm.text};
   height: auto;
-  text-align: center;
   line-height: 1.6;
 
   ul {
@@ -247,11 +246,59 @@ const BackSummaryIn = styled(SectionIn)`
     margin-bottom: 14px;
     color: ${nm.muted};
   }
-
-  strong {
-    color: ${nm.text};
+  li:first-child{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:#000;
+    
+    svg{
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+    p:first-of-type{
+      font-size:var(--font-size-lg);
+      font-weight:700;
+      
+      
+    }
+    p:last-child{
+      font-size:var(--font-size-sm);
+      color:var(--gray-sub)
+    }
   }
+
+  li:nth-child(2){
+    position:relative;
+    padding:20px 0;
+    color:var(--gray-main);
+    font-size:var(--font-size-base);
+
+    &:before{
+      content:'';
+      width:80%;
+      height:1px;
+      position:absolute;
+      top:0;
+      left:50%;
+      transform: translateX(-50%);
+      background:var(--gray-line);
+    }
+    &:after{
+      content:'';
+      width:80%;
+      height:1px;
+      position:absolute;
+      bottom:0;
+      left:50%;
+      transform: translateX(-50%);
+      background:var(--gray-line);
+    }
+  }
+
+  
 `;
+
 
 const BackSectionIn = styled(SectionIn)`
   display: flex;
@@ -265,15 +312,9 @@ const BackSectionIn = styled(SectionIn)`
 `;
 
 /* ✅ LEFT: 리스트 카드(패임 X, 둥둥) */
-const LeftPanel = styled(Card)`
+const LeftPanel = styled(Card2)`
   width: 35%;
   max-height: 60vh;
-
-  background: ${nm.bg};
-  box-shadow: ${nmOutSoft};
-  border: 1px solid ${nm.stroke};
-  border-radius: 22px;
-  overflow: hidden;
 
   ul {
     overflow-y: auto;
@@ -287,11 +328,11 @@ const LeftPanel = styled(Card)`
   li {
     width: 100%;
     padding: 12px 14px;
-    color: ${nm.text};
+  
     cursor: pointer;
     border-radius: 14px;
     transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease, color 0.15s ease;
-
+    
     &:hover {
       transform: translateX(4px);
       background: rgba(255, 255, 255, 0.35);
@@ -300,11 +341,15 @@ const LeftPanel = styled(Card)`
 
     &.active {
       background: rgba(255, 255, 255, 0.5);
-      color: ${nm.accent};
+      color: var(--blue-main);
       font-weight: 800;
       box-shadow: ${nmOutTiny};
+     
     }
   }
+
+
+
 
   /* ========== 모바일 전용 ========== */
   ${({ $isMobile }) =>
@@ -345,16 +390,46 @@ const LeftPanel = styled(Card)`
   }
 `;
 
-/* ✅ RIGHT: 상세 카드(패임 X, 둥둥) */
-const RightPanel = styled(Card)`
-  width: 60%;
-  max-height: 60vh;
+const ListItem = styled(Card2)`
+  position: relative;
+  margin-bottom: 0.75rem;
+  border-radius: 0.25rem;
+  z-index: 0;
+  color:var(--gray-main);
+  font-weight:${({ theme }) => theme.fontWeight.semiBold};;
 
-  background: ${nm.bg};
-  box-shadow: ${nmOutSoft};
-  border: 1px solid ${nm.stroke};
-  border-radius: 22px;
-  overflow: hidden;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    box-shadow: ${({ theme }) => theme.neumorphism.pressed()};
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+  }
+
+  &:hover {
+    box-shadow: none; 
+    cursor: pointer;
+    &::after {
+      opacity: 1;
+    }
+  }
+
+  ${({ $active }) => $active && `
+    box-shadow: none;
+     background:var(--blue-main);
+      color:#fff;
+    &::after {
+      opacity: 1;
+    }
+  `}
+`
+
+const RightPanel = styled(Card2)`
+  width: 60%;
+  height:auto;
 
   @media ${({ theme }) => theme.device.tablet} {
     width: 100%;
@@ -362,23 +437,23 @@ const RightPanel = styled(Card)`
   }
 
   .right_in {
-    padding: 18px 20px 20px;
+    padding: 1.125rem 1.25rem 1.25rem;
   }
 
   p.title {
-    font-size: 1.15rem;
-    text-align: center;
+    font-size: var(--font-size-lg);
+    text-align:left;
     font-weight: 800;
     color: ${nm.text};
     position: relative;
-    padding-bottom: 14px;
-    margin: 6px 0 14px;
+    padding-bottom: 0.875rem;
+    margin: 0.375rem 0 0.875rem;
 
     &::after {
       content: "";
       width: 100%;
-      height: 1px;
-      background: rgba(120, 135, 160, 0.18);
+      height: 0.0625rem;
+      background: var(--gray-line);
       position: absolute;
       left: 0;
       bottom: 0;
@@ -386,34 +461,37 @@ const RightPanel = styled(Card)`
   }
 
   p.label {
-    margin: 14px 0 6px;
-    color: ${nm.text};
+    margin: 1.25rem 0 0.75rem;
+    color: var(--gray-main);
     font-weight: 800;
+    font-size:var(--font-size-base);
   }
 
   ul.desc {
-    margin: 0 0 8px;
+    margin: 0 0 0px;
     padding-left: 0;
     list-style: none;
+    font-size:var(--font-size-base);
+    color:var(--gray-main);
   }
 
   li {
-    margin-bottom: 8px;
+    margin-bottom: 0.5rem;
     position: relative;
-    padding-left: 16px;
+    padding-left: 1rem;
     color: ${nm.muted};
-    line-height: 1.55;
+
 
     &::before {
       content: "";
       position: absolute;
-      left: 0;
-      top: 9px;
-      width: 6px;
-      height: 6px;
+      left: 0.375rem;
+      top: 50%;
+      transform:translateY(-50%);
+      width: 0.3125rem;
+      height: 0.3125rem;
       border-radius: 50%;
-      background: ${nm.accent};
-      opacity: 0.65;
+      background: var(--blue-sub2);
     }
   }
 `;

@@ -1,25 +1,5 @@
 import styled from "styled-components";
-/*
-export const Card = styled.div`
-  width: 520px;
-  height: auto;
-  border-radius: 20px;
-  //background: var(--clr-card);
-  background: transparent;
-  background: rgba(255, 255, 255, 0.1);
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  //box-shadow: 0 8px 32px var(--clr-glow);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(20px);
-  transition: all 0.4s ease;
-  color: var(--clr-text);
-  padding: 32px;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  z-index: 3;
-`;
-*/
+
 
 
 export const Card = styled.div`
