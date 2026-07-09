@@ -1,6 +1,6 @@
 import { Building2 } from "lucide-react"
 import styled from "styled-components"
-import { Tag1 } from "./tag/tag1"
+import { Tag1 } from "./tag/Tag1"
 
 export function CardCompanyTitle({ icon, title, position }){
 

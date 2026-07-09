@@ -4,7 +4,7 @@ import { Title1 } from "./common/Title1";
 import { Card2 } from "./common/Card2";
 import { ArrowDown, Building2, ChevronDown, ChevronsDown, CircleUserRound } from "lucide-react";
 
-import { Tag1 } from "./common/tag/tag1";
+import { Tag1 } from "./common/tag/Tag1";
 import { Tag3 } from "./common/tag/Tag3";
 import { Tag2 } from "./common/tag/Tag2";
 import { ButtonPill } from "./common/Button/ButtonPill";

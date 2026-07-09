@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { Card2 } from "./common/Card2";
 import { Title1 } from "./common/Title1";
 import { ButtonCircle } from "./common/Button/ButtonCircle";
-import { Tag1 } from "./common/tag/tag1";
+import { Tag1 } from "./common/tag/Tag1";
 import { TbFlag2 } from "react-icons/tb";
 import { Tag2 } from "./common/tag/Tag2";
 import { FaEnvelope, FaGithub, FaPhone } from "react-icons/fa";
