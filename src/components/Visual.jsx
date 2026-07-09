@@ -36,26 +36,34 @@ export default function Visual({ theme }) {
     { icon: "icon6", title: "Continuous Learning", con: "새로운 기술을 꾸준히 익히고 프로젝트에 적용하며 성장합니다." },
   ]
 
-  const [displayText, setDisplayText] = useState("");
+  const [lines, setLines] = useState(["", "", ""]);
   const [line, setLine] = useState(0);
 
   useEffect(() => {
-    if (line < introText.length) {
-      setDisplayText("");
-      let i = 0;
-      const timer = setInterval(() => {
-        setDisplayText(introText[line].slice(0, i + 1));
-        i++;
-        if (i === introText[line].length) {
-          clearInterval(timer);
-          setTimeout(() => {
-            setDisplayText("");
-            setLine((prev) => prev + 1);
-          }, 700);
-        }
-      }, 70);
-      return () => clearInterval(timer);
-    }
+    if (line >= introText.length) return;
+
+
+    let i = 0;
+    const timer = setInterval(() => {
+      setLines(prev => {
+        const next = [...prev];
+        next[line] = introText[line].slice(0, i + 1);
+        return next;
+      });
+
+      i++;
+
+      if (i === introText[line].length) {
+        clearInterval(timer);
+
+        setTimeout(() => {
+          setLine(prev => prev + 1);
+        }, 700);
+      }
+
+    }, 70);
+
+    return () => clearInterval(timer);
   }, [line]);
 
   return (
@@ -76,12 +84,14 @@ export default function Visual({ theme }) {
                   <p>프론트엔드 개발자,<br />
                     ooo입니다.</p>
                 </Txt1>
-                <Txt2 $mode={theme}>
-                  {introText.slice(0, line).map((t, i) => (
-                    <Line key={i}>{t}</Line>
+                <Txt2>
+                  {lines.map((text, idx) => (
+                    <Line key={idx}>
+                      {text}
+                      {idx === line && line < introText.length ? "|" : ""}
+                    </Line>
                   ))}
                 </Txt2>
-                {line < introText.length && <Line>{displayText}|</Line>}
               </LeftArea>
 
 
@@ -126,6 +136,7 @@ const VisualSection = styled(Section)`
 const VisualCard = styled(Card2)`
   padding:0;
   position:relative;
+
 `
 
 
@@ -160,6 +171,23 @@ const ConArea = styled.div`
   padding: 2.5rem 2.25rem;
   gap:3rem;
   align-items: center;
+
+
+  @media ${({ theme }) => theme.device.tablet} {
+    flex-direction  :column ;
+    align-items: flex-start;
+    gap:0rem;
+    
+  }
+
+  @media ${({ theme }) => theme.device.mobile} {
+    flex-direction  :column ;
+    align-items: flex-start;
+    gap:0rem;
+    
+  }
+
+  
 `
 
 const LeftArea = styled.pre`
@@ -170,6 +198,14 @@ align-items: flex-start;
 font-size:var(--font-size-base);
 color:var(--gray-main);
 padding-left: 1.5rem;
+
+@media ${({ theme }) => theme.device.tablet} {
+  width:100%;
+}
+@media ${({ theme }) => theme.device.mobile} {
+  width:100%;
+}
+
 `;
 
 const Txt1 = styled.div`
@@ -185,16 +221,15 @@ const Txt1 = styled.div`
 const Txt2 = styled.div`
   height:12rem;
   line-height: 1.6;
-  
   white-space: pre-wrap;
-
   min-height: 9rem;
   margin-top:1rem;
+
   
 `
 
 const Line = styled.div`
-  color: inherit;
+   min-height: 1.6em;
 `;
 
 
@@ -247,6 +282,14 @@ const ValueDiv = styled.div`
     min-height:3.2rem;
     font-weight:${({ theme }) => theme.fontWeight.medium};
   }
+  @media ${({ theme }) => theme.device.tablet} {
+    width:48%;
+  }
+
+  @media ${({ theme }) => theme.device.mobile} {
+    
+  }
+  
 `
 
 

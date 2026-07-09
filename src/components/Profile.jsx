@@ -139,11 +139,18 @@ const ProfileSection = styled(Card2)`
   width: 100%;
   margin:0 auto;
   padding:3.5rem 0;
+  @media ${({ theme }) => theme.device.tablet} {
+    flex-direction: column;
+    padding:1rem;
+  }
   
 `;
 
 const AboutCard = styled.div`
   width:50%;
+  @media ${({ theme }) => theme.device.tablet} {
+    width:100%;
+  }
 `
 const AboutCard1 = styled(AboutCard)`
   flex: 0 0 38%;
