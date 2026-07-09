@@ -111,14 +111,23 @@ const CardSection = styled(Card2)`
   width:100%;
   margin-top:2.5rem;
   display: flex;
-  padding:1.5rem;  
+  padding:1.5rem;
+  @media ${({ theme }) => theme.device.tablet} {
+    flex-direction: column;
+  }  
 `
 
 const ExperiCon = styled.div`
   width:84%;
+  @media ${({ theme }) => theme.device.tablet} {
+  width:100%;
+  }
 `
 const Responsibility = styled.ul`
   margin:1.5rem 0px 1.5rem 1rem;
+  @media ${({ theme }) => theme.device.tablet} {
+    margin:1rem 0px 1.5rem 1rem;
+  }
 `
 const Respon = styled.li`
 
@@ -126,6 +135,7 @@ const Respon = styled.li`
   font-size:var(--font-size-base);
   color:var(--gray-main);
   margin-bottom:0.75rem;
+  word-break: keep-all;
 
   &::before{
     content:'';

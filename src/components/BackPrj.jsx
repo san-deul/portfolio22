@@ -158,7 +158,7 @@ export default function BackPrj() {
         {/* LEFT 영역 */}
         <LeftPanel $isMobile={isMobile}>
           {isMobile ? (
-            <Swiper slidesPerView={2.3} spaceBetween={10}>
+            <Swiper slidesPerView={1.5} spaceBetween={10}>
               {projects.map((p) => (
                 <SwiperSlide key={p.id}>
                   <button
@@ -220,76 +220,7 @@ export default function BackPrj() {
 
 
 
-const BackSummaryIn = styled(Card2)`
 
-  width:100%;
-  max-width:800px;
-  margin:0 auto;
-  text-align: center;
-  height: auto;
-  line-height: 1.6;
-
-  ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  li {
-    margin-bottom: 14px;
-  }
-  li:first-child{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color:#000;
-    
-    svg{
-      width: 1.5rem;
-      height: 1.5rem;
-    }
-    p:first-of-type{
-      font-size:var(--font-size-lg);
-      font-weight:700;
-      
-      
-    }
-    p:last-child{
-      font-size:var(--font-size-sm);
-      color:var(--gray-sub)
-    }
-  }
-
-  li:nth-child(2){
-    position:relative;
-    padding:20px 0;
-    color:var(--gray-main);
-    font-size:var(--font-size-base);
-
-    &:before{
-      content:'';
-      width:80%;
-      height:1px;
-      position:absolute;
-      top:0;
-      left:50%;
-      transform: translateX(-50%);
-      background:var(--gray-line);
-    }
-    &:after{
-      content:'';
-      width:80%;
-      height:1px;
-      position:absolute;
-      bottom:0;
-      left:50%;
-      transform: translateX(-50%);
-      background:var(--gray-line);
-    }
-  }
-
-  
-`;
 
 
 const BackSectionIn = styled(SectionIn)`
@@ -307,7 +238,7 @@ const BackSectionIn = styled(SectionIn)`
 const LeftPanel = styled(Card2)`
   width: 35%;
   max-height: 60vh;
-
+  
   ul {
     overflow-y: auto;
     width: 100%;
@@ -315,6 +246,7 @@ const LeftPanel = styled(Card2)`
     margin: 0;
     padding: 0.625rem;
     list-style: none;
+  
   }
 
   li {
@@ -349,14 +281,15 @@ const LeftPanel = styled(Card2)`
       width: 100%;
       max-height: none;
 
-      ul { display: none; }
+      ul { 
+        display: none; 
+        
+      }
 
       .swiper { padding: 10px; }
 
       .mobile-item {
         width: 100%;
-        height: 48px;
-        padding: 10px 12px;
         border-radius: 16px;
         border: 1px solid ${nm.stroke};
         background: rgba(255,255,255,0.35);
@@ -364,8 +297,7 @@ const LeftPanel = styled(Card2)`
         color: ${nm.text};
         cursor: pointer;
         text-align: left;
-        font-size: 0.9rem;
-        line-height: 1.2;
+        font-size: 1rem;
         outline: none;
       }
 

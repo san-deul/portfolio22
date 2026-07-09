@@ -29,14 +29,20 @@ const Title = styled.div`
   display: flex;
   align-items: center;
   gap: 0.625rem;
-
+  line-height:1.2;
 
   svg{
     color:var(--gray-main);
+    width:1.5rem;
+    height:1.5rem;
   }
 
   p:first-of-type{
     font-size:var(--font-size-lg) ;
+  }
+
+  @media ${({ theme }) => theme.device.tablet} {
+    align-items: flex-start;
   }
 `
 

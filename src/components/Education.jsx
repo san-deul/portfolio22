@@ -59,19 +59,29 @@ const CardSection = styled(Card2)`
   margin-top:2.5rem;
   display: flex;
   padding:1.5rem;
+  @media ${({ theme }) => theme.device.tablet} {
+    flex-direction: column;
+  }
   
 `
 
 
 const ExperiCon = styled.div`
-  width:84%
+  width:84%;
+  @media ${({ theme }) => theme.device.tablet} {
+    width:100%;
+  }
 `
 
 
 const Responsibility = styled.div`
   width:70%;
   margin:0.625rem 0px 1.5rem 1rem;
-  color:#979a9e;
+  color:var(--gray-main);
   word-break: keep-all;
   line-height:140%;
+  @media ${({ theme }) => theme.device.tablet} {
+    width:100%;
+    margin:1rem 0px 1.5rem 0.5rem;
+  }
 `

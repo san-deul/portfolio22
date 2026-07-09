@@ -42,5 +42,6 @@ export const SectionIn = styled.div`
          ${(props) => props.theme.device.mobile}{
     width:94%;
     margin:0 auto;
+    padding:0;
   }
 `;

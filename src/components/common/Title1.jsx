@@ -16,4 +16,13 @@ export const Title1 = styled.div`
   display: table;
   padding:0.375rem 0;
   margin-bottom:2.875rem;
+
+  @media ${({ theme }) => theme.device.tablet} {
+    font-size:3.5rem;
+  }
+  @media ${({ theme }) => theme.device.mobile} {
+    font-size:2.8rem;
+    margin-bottom:1rem;
+  }
+
 `

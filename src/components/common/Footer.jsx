@@ -85,9 +85,6 @@ const FooterText = styled.p`
   font-size: 1.5rem;
   font-weight: 800;
   letter-spacing: -0.01em;
-
-
-
   background: linear-gradient(90deg, #93c5fd, #a78bfa);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -96,7 +93,8 @@ const FooterText = styled.p`
   height: 2.25rem;
 
   @media ${({ theme }) => theme.device.tablet} {
-    font-size: 1rem;
+    font-size: 2rem;
     white-space: pre-wrap;
+    color:blue;
   }
 `;

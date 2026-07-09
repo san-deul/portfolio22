@@ -53,6 +53,10 @@ const ImgArea = styled.div`
     margin:0 auto;
     border-radius: 0.75rem;
   }
+  @media ${({ theme }) => theme.device.tablet} {
+    width:100%;
+  }
+
 `
 
 const ProfTitle = styled.div`
@@ -65,6 +69,10 @@ const ExpArea = styled.div`
 const Content = styled(Card2)`
   width:80%;
   margin:1rem auto;
+  @media ${({ theme }) => theme.device.tablet} {
+    width:100%;
+  }
+
 `
 
 const Stack = styled.div`
@@ -84,11 +92,23 @@ const Stack = styled.div`
     }
   }
 
+  @media ${({ theme }) => theme.device.mobile} {
+    div{
+      flex-direction: column;
+      p:first-of-type{
+        width: 100%;
+      }      
+    }
+  }
+
 `
 const LinkArea = styled.div`
   display: flex;
   gap:1.125rem;
   margin-top:1.75rem;
+  @media ${({ theme }) => theme.device.mobile} {
+    flex-direction: column;
+  }
   
 `
 const Link = styled(ButtonPill)`

@@ -129,6 +129,13 @@ export default function Visual({ theme }) {
 const VisualSection = styled(Section)`
   margin-top:4.375rem;
   height:100vh;
+  @media ${({ theme }) => theme.device.tablet} {
+    margin-top:2.5rem;
+    height:70vh;
+  }
+  @media ${({ theme }) => theme.device.mobile} {
+    height:100vh;
+  }
 
 `
 
@@ -219,10 +226,10 @@ const Txt1 = styled.div`
 `
 
 const Txt2 = styled.div`
-  height:12rem;
+  height:auto;
   line-height: 1.6;
   white-space: pre-wrap;
-  min-height: 9rem;
+
   margin-top:1rem;
 
   
@@ -316,7 +323,7 @@ const ScrollDown = styled.div`
 const MouseIcon = styled.div`
   width: 1.625rem;
   height: 2.625rem;
-  border: 0.125rem solid var(--gray-main);
+  border: 0.125rem solid var(--gray-sub);
   border-radius: 0.875rem;
 
   display: flex;
@@ -342,12 +349,12 @@ const Wheel = styled.div`
   width: 0.25rem;
   height: 0.5rem;
   border-radius: 0.125rem;
-  background:var(--gray-main);
+  background:var(--gray-sub);
   animation: ${scrollAnim} 1.6s ease-in-out infinite;
 `;
 
 const ScrollText = styled.div`
   font-size: 0.75rem;
-  color: var(--gray-main);
+  color: var(--gray-sub);
   letter-spacing: 0.05em;
 `;
