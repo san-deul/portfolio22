@@ -131,4 +131,8 @@ const Link = styled(ButtonPill)`
       color:var(--gray-main);
     }
   }
+  @media ${({ theme }) => theme.device.mobile} {
+    width:100%;
+
+  }
 `

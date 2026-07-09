@@ -128,13 +128,13 @@ export default function Visual({ theme }) {
 
 const VisualSection = styled(Section)`
   margin-top:4.375rem;
-  height:100vh;
+   min-height:100vh;
   @media ${({ theme }) => theme.device.tablet} {
     margin-top:2.5rem;
-    height:70vh;
+    min-height:100vh;
   }
   @media ${({ theme }) => theme.device.mobile} {
-    height:100vh;
+    min-height:100vh;
   }
 
 `
