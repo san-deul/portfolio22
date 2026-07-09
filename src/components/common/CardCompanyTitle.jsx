@@ -32,7 +32,7 @@ const Title = styled.div`
 
 
   svg{
-    color:#54575c;
+    color:var(--gray-main);
   }
 
   p:first-of-type{

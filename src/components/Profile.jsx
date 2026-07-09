@@ -13,28 +13,7 @@ import { Tag3 } from "./common/tag/Tag3";
 import { Tag4 } from "./common/tag/Tag4";
 import { Tag5 } from "./common/tag/Tag5";
 
-/* =========================
-   ✅ Soft Neumorphism Tokens (Light only)
-========================= */
-const nm = {
-  bg: "#EEF2FA",
-  text: "#2b3445",
-  muted: "#7b8797",
-  accent: "#4f7cff",
-  shadowDark: "rgba(120, 135, 160, 0.18)",
-  shadowLight: "rgba(255, 255, 255, 0.95)",
-  stroke: "rgba(255,255,255,0.65)",
-};
 
-const nmOutSoft = `
-  4px 4px 6px ${nm.shadowDark},
-  -4px -4px 6px ${nm.shadowLight}
-`;
-
-const nmOutTiny = `
-  6px 6px 16px ${nm.shadowDark},
-  -6px -6px 16px ${nm.shadowLight}
-`;
 
 const skills = {
   Frontend: ["HTML", "CSS", "JavaScript", "React", "TypeScript", "Next.js"],
@@ -52,86 +31,97 @@ const experience = [
 ];
 
 const iconMap = {
-  mail:<FaEnvelope />,
-  phone:<FaPhone/>,
+  mail: <FaEnvelope />,
+  phone: <FaPhone />,
   github: <FaGithub />,
-  
+
 }
 
 const profileData = [
-  { icon: "mail", con: "bliss0208@naver.com" , link:"null"},
-  { icon: "phone", con: "010 4180 3488" , link:"null"},
-  { icon: "github", con: "https://github.com/san-deul" , link:"https://github.com/san-deul"}
+  { icon: "mail", con: "bliss0208@naver.com", link: "null" },
+  { icon: "phone", con: "010 4180 3488", link: "null" },
+  { icon: "github", con: "https://github.com/san-deul", link: "https://github.com/san-deul" }
 ]
 
 export default function Profile() {
   return (
     <>
       <Section id="about">
-        <Title1>About Me</Title1>
-        <ProfileSectionIn>
 
-          <AboutCard1>
-            <ProfileCard>
-              <ProfileTop>
-                <ProfImg $noHover></ProfImg>
-                <p>강산들</p>
-                <p>Frontend Developer</p>
-                <p>gggg</p>
-              </ProfileTop>
-              <ProfBottom>
-                {profileData.map((item,i) =>(
-                  <div key={i}>
-                    <p>{iconMap[item.icon]}</p>
-                    <p>{item.con}</p>
-                  </div>
+        <SectionIn>
+          <Title1>About Me</Title1>
+
+          <ProfileSection>
+            <AboutCard1>
+              <ProfileCard>
+                <ProfileTop>
+                  <ProfImg $noHover></ProfImg>
+                  <p>강산들</p>
+                  <p>Frontend Developer</p>
+                  <p>gggg</p>
+                </ProfileTop>
+                <ProfBottom>
+                  {profileData.map((item, i) => (
+                    <div key={i}>
+                      <p>{iconMap[item.icon]}</p>
+                      {item.link && item.link!== "null" ? (
+                        <a href = {item.link} target="_blank" rel="noopener noreferrer">
+                          <p>{item.con}</p>
+                        </a>
+                      ):(
+                        <p>{item.con}</p>
+                      )}
+                      
+                    </div>
+                  ))}
+
+                </ProfBottom>
+              </ProfileCard>
+            </AboutCard1>
+
+            <AboutCard>
+              <ProfileCon>
+                <ProfTitle>
+                  <span></span>
+                  <span>🛠️ How I Work</span>
+                </ProfTitle>
+                <p>
+                  '잘 동작하는 코드'보다
+                  '오래 유지할 수 있는 구조'를 만드는 것에 더 큰 가치를 둡니다.<br /><br />
+
+                  프로젝트를 완성하는 것보다,
+                  완성된 프로젝트를 다시 돌아보며 더 나은 구조를 고민하고
+                  리팩토링하는 과정에서 가장 큰 재미를 느낍니다.<br /><br />
+
+                  컴포넌트를 재사용 가능한 형태로 설계하고,
+                  유지보수성과 사용자 경험을 함께 고려하며
+                  시간이 지나도 읽기 쉽고 확장 가능한 코드를 만드는 것을 지향합니다.<br /><br />
+
+                </p>
+              </ProfileCon>
+              <ProfileCon>
+                <ProfTitle>
+                  <span>⚡</span>
+                  <span>Skills</span>
+                </ProfTitle>
+
+                {Object.entries(skills).map(([category, list]) => (
+                  <SkillGroup key={category}>
+                    <p>{category}</p>
+                    <SkillList>
+                      {list.map((s, i) => (
+                        <Skill key={i}>{s}</Skill>
+                      ))}
+                    </SkillList>
+                  </SkillGroup>
                 ))}
-                
-              </ProfBottom>
-            </ProfileCard>
-          </AboutCard1>
+              </ProfileCon>
 
-          <AboutCard>
-            <ProfileCon>
-              <ProfTitle>
-                <span></span>
-                <span>🛠️ How I Work</span>
-              </ProfTitle>
-              <p>
-                '잘 동작하는 코드'보다
-                '오래 유지할 수 있는 구조'를 만드는 것에 더 큰 가치를 둡니다.<br /><br />
+            </AboutCard>
 
-                프로젝트를 완성하는 것보다,
-                완성된 프로젝트를 다시 돌아보며 더 나은 구조를 고민하고
-                리팩토링하는 과정에서 가장 큰 재미를 느낍니다.<br /><br />
+          </ProfileSection>
+        </SectionIn>
 
-                컴포넌트를 재사용 가능한 형태로 설계하고,
-                유지보수성과 사용자 경험을 함께 고려하며
-                시간이 지나도 읽기 쉽고 확장 가능한 코드를 만드는 것을 지향합니다.<br /><br />
-
-              </p>
-            </ProfileCon>
-            <ProfileCon>
-              <ProfTitle>
-                <span>⚡</span>
-                <span>Skills</span>
-              </ProfTitle>
-              
-              {Object.entries(skills).map(([category, list]) => (
-                <SkillGroup key={category}>
-                  <p>{category}</p>
-                  <SkillList>
-                    {list.map((s, i) => (
-                      <Skill key={i}>{s}</Skill>
-                    ))}
-                  </SkillList>
-                </SkillGroup>
-              ))}
-            </ProfileCon>
-
-          </AboutCard>
-
-        </ProfileSectionIn>
       </Section>
 
     </>
@@ -141,21 +131,18 @@ export default function Profile() {
 
 /* ========================= Styled ========================= */
 
-
-
-
-const ProfileSectionIn = styled(Card2)`
+const ProfileSection = styled(Card2)`
   display: flex;
   align-items: stretch; 
-  gap: 18px;
+  justify-content: center;
+  gap: 2.25rem;
   width: 100%;
-  transition: 0.25s ease;
-  max-width: 1280px;
   margin:0 auto;
+  padding:3.5rem 0;
+  
 `;
 
 const AboutCard = styled.div`
-  gap:16px;
   width:50%;
 `
 const AboutCard1 = styled(AboutCard)`
@@ -172,9 +159,10 @@ const ProfileCard = styled.div`
   flex-direction: column;
   align-content: center;
   align-items: center;
-  border-radius:16px;
-  padding:0 20px;
-  >div{padding:16px;}
+  justify-content: center;
+  border-radius:1rem;
+
+  >div{padding:1rem;}
 `;
 
 const ProfileTop = styled.div`
@@ -187,14 +175,14 @@ const ProfileTop = styled.div`
 
   }
   p:nth-child(2){
-    margin-top:8px;
+    margin-top:0.5rem;
     color:#000;
     font-weight:${({ theme }) => theme.fontWeight.bold};;
   }
   p:nth-child(3){
     font-size:var(--font-size-base);
     color:var(--blue-main);
-    margin:4px 0px 6px;
+    margin:0.25rem 0px 0.375rem;
   }
   p:nth-child(4){
     font-size:var(--font-size-sm);
@@ -216,7 +204,10 @@ const ProfBottom = styled.div`
     gap:1rem;
     font-size:var(--font-size-base);
     color:var(--gray-main);
-    padding:6px 0px;
+    padding:0.375rem 0px;
+    a{
+      color:inherit;
+    }
   }
 
 `
@@ -225,7 +216,7 @@ const Icon = styled.div`
 `
 
 const ProfTitle = styled.div`
-  padding:14px 0;
+  padding:0.875rem 0;
   span{
     color:var(--blue-main);
     font-size: var(--font-size-lg);
@@ -233,13 +224,6 @@ const ProfTitle = styled.div`
   }
 `
 
-const SubTitle = styled.h3`
-  font-size: 1.25rem;
-  margin-bottom: 1.1rem;
-  font-weight: 900;
-  color: ${nm.text};
-  letter-spacing: -0.01em;
-`;
 
 const ProfileInfo = styled.div`
   width: 100%;
@@ -257,18 +241,12 @@ const Row = styled.div`
   align-items: flex-start;
 `;
 
-const ProfileTitle = styled.div`
-  width: 25%;
-  font-weight: 800;
-  color: ${nm.text};
-
-`;
-
-
 const ProfileCon = styled.div`
 
   p{
-        word-break: keep-all;
+    word-break: keep-all;
+    color:var(--gray-main);
+    line-height: 1.1;
   }
 `;
 
@@ -279,26 +257,7 @@ const SkillList = styled.ul`
   gap: 0.7rem;
   list-style: none;
   padding: 0;
-  margin: 0;
-
-  li {
-    padding: 0.55rem 0.9rem;
-    border-radius: 999px;
-    background: ${nm.bg};
-    border: 1px solid ${nm.stroke};
-    box-shadow: ${nmOutTiny};
-
-    font-size: 0.85rem;
-    font-weight: 800;
-    color: ${nm.text};
-    transition: transform 0.15s ease, box-shadow 0.15s ease, color 0.15s ease;
-
-    &:hover {
-      transform: translateY(-1px);
-      color: ${nm.accent};
-      box-shadow: 10px 10px 22px ${nm.shadowDark}, -10px -10px 22px ${nm.shadowLight};
-    }
-  }
+  margin-bottom: 0.75rem;
 `;
 
 const Skill = styled(Tag4)`
@@ -311,6 +270,7 @@ const SkillGroup = styled.div`
     color:#000;
     font-size: var(--font-size-base);
     font-weight:${({ theme }) => theme.fontWeight.medium};;
+    margin-bottom:0.25rem;
   }
 
   &:last-child {
@@ -320,36 +280,3 @@ const SkillGroup = styled.div`
 
 
 
-const CareerList = styled.ul`
-  list-style: none;
-  padding: 0;
-  margin: 0;
-
-  li {
-    padding: 14px 14px;
-    border-radius: 16px;
-    border: 1px solid ${nm.stroke};
-    background: rgba(255, 255, 255, 0.35);
-    box-shadow: ${nmOutTiny};
-    margin-bottom: 12px;
-  }
-
-  li:last-child {
-    margin-bottom: 0;
-  }
-
-  .period {
-    font-size: 0.85rem;
-    color: ${nm.muted};
-    margin: 0 0 4px;
-    font-weight: 700;
-  }
-
-  strong {
-    display: block;
-    margin-top: 2px;
-    font-size: 1.02rem;
-    color: ${nm.text};
-    line-height: 1.5;
-  }
-`;

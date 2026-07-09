@@ -12,9 +12,7 @@ import { ButtonGlassmorphism } from "./common/Button/ButtonGlassmorphism";
 import { CardGlassmorphism } from "./common/CardGlassmorphism";
 import { Building2 } from "lucide-react";
 
-/* =========================
-   ✅ Soft Neumorphism Tokens (Light only)
-========================= */
+
 const nm = {
   bg: "#EEF2FA",
   text: "#2b3445",
@@ -38,7 +36,6 @@ const nmOutTiny = `
 export default function BackPrj() {
   const [active, setActive] = useState("1");
 
-  // 🔥 theme 사용(브레이크포인트만 참조)
   const theme = useTheme();
 
   // 모바일 구분
@@ -221,10 +218,7 @@ export default function BackPrj() {
 }
 
 
-const BackSection = styled(Section)`
-  background: ${nm.bg};
-  height: auto;
-`;
+
 
 const BackSummaryIn = styled(Card2)`
 
@@ -232,7 +226,6 @@ const BackSummaryIn = styled(Card2)`
   max-width:800px;
   margin:0 auto;
   text-align: center;
-  color: ${nm.text};
   height: auto;
   line-height: 1.6;
 
@@ -244,7 +237,6 @@ const BackSummaryIn = styled(Card2)`
 
   li {
     margin-bottom: 14px;
-    color: ${nm.muted};
   }
   li:first-child{
     display: flex;
@@ -311,7 +303,7 @@ const BackSectionIn = styled(SectionIn)`
   }
 `;
 
-/* ✅ LEFT: 리스트 카드(패임 X, 둥둥) */
+
 const LeftPanel = styled(Card2)`
   width: 35%;
   max-height: 60vh;

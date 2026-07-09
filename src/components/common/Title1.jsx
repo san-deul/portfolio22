@@ -15,4 +15,5 @@ export const Title1 = styled.div`
   margin: 0 auto;
   display: table;
   padding:0.375rem 0;
+  margin-bottom:2.875rem;
 `

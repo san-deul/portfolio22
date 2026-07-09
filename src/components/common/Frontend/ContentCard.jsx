@@ -49,6 +49,7 @@ const ImgArea = styled.div`
   img{
     display: inline-block;
     width:100%;
+    /*max-width:1100px;*/
     max-width:1100px;
     margin:0 auto;
     border-radius: 0.75rem;
@@ -56,8 +57,6 @@ const ImgArea = styled.div`
 `
 
 const ProfTitle = styled.div`
-  
-
 `
 
 const ExpArea = styled.div`
@@ -100,10 +99,14 @@ const Link = styled(ButtonPill)`
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 6px;
+    gap: 0.375rem;
     width: 100%;
     height: 100%;
     font-size:var(--font-size-base);
+
+    span:first-of-type{
+
+    }
     
     span:last-of-type{
       color:var(--gray-main);

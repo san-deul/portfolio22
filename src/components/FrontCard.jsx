@@ -69,7 +69,7 @@ export function FrontCard({ }) {
 
   return (
     <>
-      <Card2 >
+      <Card2 style={{ marginBottom: '2rem' }}>
         <TopTitle num={firstProject.num} title={firstProject.title}></TopTitle>
         <ContentCard
           img={firstProject.img}

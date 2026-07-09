@@ -4,7 +4,7 @@ export function TopTitle({ num, title }){
   
   return(
     <TitleArea>
-      <p>PROJECT{num}</p>
+      <p>PROJECT {num}</p>
       <p>{title}</p>
     </TitleArea>
   )

@@ -1,33 +1,12 @@
 import styled, { keyframes } from "styled-components";
 import { useEffect, useState } from "react";
-import { Section } from "./common/Section";
+import { Section, SectionIn } from "./common/Section";
 import { Card2 } from "./common/Card2";
 import { CardGlassmorphism } from "./common/CardGlassmorphism";
 import { ButtonGlassmorphism } from "./common/Button/ButtonGlassmorphism";
 import { BookOpenText, CodeXml, Handshake, MonitorSmartphone, Puzzle, UserRound } from "lucide-react";
 
-const nm = {
-  bg: "#EEF2FA",                 // 예시 이미지처럼 살짝 보라/블루 톤
-  text: "#2b3445",
-  muted: "#7b8797",
-  shadowDark: "rgba(120, 135, 160, 0.18)",  // ✅ 매우 연하게
-  shadowLight: "rgba(255, 255, 255, 0.95)", // ✅ 위쪽 빛
-  stroke: "rgba(255,255,255,0.55)",         // ✅ 얇은 하이라이트
-};
-
-const nmOutSoft = `
-  10px 10px 26px ${nm.shadowDark},
-  -10px -10px 26px ${nm.shadowLight}
-`;
-
-const nmOutTiny = `
-  6px 6px 16px ${nm.shadowDark},
-  -6px -6px 16px ${nm.shadowLight}
-`;
-
-
 export default function Visual({ theme }) {
-
 
   const introText = [
     "1픽셀의 디테일부터 보이지 않는 데이터의 흐름까지.",
@@ -35,17 +14,17 @@ export default function Visual({ theme }) {
     "완성도 높은 인터페이스를 만드는 개발자가 되겠습니다.",
 
   ];
-const iconStyle = {
-  size: 36,
-  strokeWidth: 2,
-};
+  const iconStyle = {
+    size: 36,
+    strokeWidth: 2,
+  };
   const iconMap = {
-    icon1:<UserRound {...iconStyle} className="text-sky-500" />,    
-    icon2:<CodeXml {...iconStyle} className="text-emerald-500" />,  
-    icon3:<MonitorSmartphone />,
-    icon4:<Handshake />,
-    icon5:<Puzzle />,
-    icon6:<BookOpenText />,
+    icon1: <UserRound {...iconStyle} className="text-sky-500" />,
+    icon2: <CodeXml {...iconStyle} className="text-emerald-500" />,
+    icon3: <MonitorSmartphone {...iconStyle} className="text-violet-500" />,
+    icon4: <Handshake {...iconStyle} className="text-rose-500" />,
+    icon5: <Puzzle {...iconStyle} className="text-amber-500" />,
+    icon6: <BookOpenText {...iconStyle} className="text-blue-500" />,
   }
 
   const value = [
@@ -80,9 +59,9 @@ const iconStyle = {
   }, [line]);
 
   return (
-    <>
-      <VisualSection id="visual">
-        <SectionIn>
+    <VisualSection id="visual">
+      <SectionIn>
+        <VisualCard>
           <EditorFrame $mode={theme}>
             <TopBar>
               <Dot color="#ff5f56" />
@@ -90,12 +69,22 @@ const iconStyle = {
               <Dot color="#27c93f" />
             </TopBar>
             <ConArea>
-              <LeftArea $mode={theme}>
-                {introText.slice(0, line).map((t, i) => (
-                  <Line key={i}>{t}</Line>
-                ))}
+              <LeftArea>
+                <Txt1>
+                  안녕하세요. <br />
+                  사용자 경험을 중요하게 생각하는 <br />
+                  <p>프론트엔드 개발자,<br />
+                    ooo입니다.</p>
+                </Txt1>
+                <Txt2 $mode={theme}>
+                  {introText.slice(0, line).map((t, i) => (
+                    <Line key={i}>{t}</Line>
+                  ))}
+                </Txt2>
                 {line < introText.length && <Line>{displayText}|</Line>}
               </LeftArea>
+
+
               <RightArea>
                 <div> 💎 What I Value</div>
                 <ValueArea>
@@ -110,33 +99,17 @@ const iconStyle = {
               </RightArea>
             </ConArea>
           </EditorFrame>
-        </SectionIn>
-      </VisualSection>
+          <ScrollDown>
+            <MouseIcon>
+              <Wheel />
+            </MouseIcon>
+            <ScrollText>Scroll Down</ScrollText>
+          </ScrollDown>
+        </VisualCard>
+      </SectionIn>
 
-      {/*
-      <VisualSection id="visual">
-        <SectionIn>
-          <EditorFrame $mode={theme}>
-            <TopBar>
-              <Dot color="#ff5f56" />
-              <Dot color="#ffbd2e" />
-              <Dot color="#27c93f" />
-            </TopBar>
-            <Content>
-              <LeftArea $mode={theme}>
-                {introText.slice(0, line).map((t, i) => (
-                  <Line key={i}>{t}</Line>
-                ))}
-                {line < introText.length && <Line>{displayText}|</Line>}
-              </LeftArea>
-              <RightArea></RightArea>
-            </Content>
-          </EditorFrame>
-        </SectionIn>
+    </VisualSection>
 
-      </VisualSection>
-      */}
-    </>
   );
 }
 
@@ -144,15 +117,15 @@ const iconStyle = {
 
 
 const VisualSection = styled(Section)`
-  margin-top:100px;
+  margin-top:4.375rem;
+  height:100vh;
+
 `
 
-const SectionIn = styled(Card2)`
-  width:100%;
-  max-width: 1280px;
-  padding:0;
-  margin:0 auto;
 
+const VisualCard = styled(Card2)`
+  padding:0;
+  position:relative;
 `
 
 
@@ -162,23 +135,19 @@ const EditorFrame = styled.div`
 
 
 const TopBar = styled.div`
-  height: 44px;
+  height: 2.75rem;
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 0 16px;
+  gap: 0.5rem;
+  padding: 0 1rem;
 
-  background: linear-gradient(
-    to bottom,
-    rgba(255,255,255,0.55),
-    rgba(255,255,255,0.15)
-  );
-  border-bottom: 1px solid rgba(120,135,160,0.12);
+
+  border-bottom: 1px solid var(--gray-line);
 `;
 
 const Dot = styled.div`
-  width: 12px;
-  height: 12px;
+  width: 0.75rem;
+  height: 0.75rem;
   border-radius: 50%;
   background: ${({ color }) => color};
 `;
@@ -188,23 +157,41 @@ const Content = styled.div`
 `
 const ConArea = styled.div`
   display: flex;
-  padding:30px;
+  padding: 2.5rem 2.25rem;
+  gap:3rem;
+  align-items: center;
 `
 
 const LeftArea = styled.pre`
-  width:50%;
-  margin: 18px;
-  height:12rem;
-  padding: 2rem;
+width:46%;
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+font-size:var(--font-size-base);
+color:var(--gray-main);
+padding-left: 1.5rem;
+`;
 
-  color: rgba(92, 99, 114, 0.75);
-  font-size: 1.25rem;
-  line-height: 1.8;
+const Txt1 = styled.div`
+  font-size: 2rem;
+  line-height: 1.2;
+  color:#000;
+  p{
+    color:var(--blue-main);
+    font-weight:${({ theme }) => theme.fontWeight.bold};;
+  }
+`
+
+const Txt2 = styled.div`
+  height:12rem;
+  line-height: 1.6;
   
   white-space: pre-wrap;
 
   min-height: 9rem;
-`;
+  margin-top:1rem;
+  
+`
 
 const Line = styled.div`
   color: inherit;
@@ -212,27 +199,27 @@ const Line = styled.div`
 
 
 const RightArea = styled.div`
-  width:50%;
+  width:auto;
   >div{
     color:var(--blue-main);
     font-size: var(--font-size-lg);
     font-weight:${({ theme }) => theme.fontWeight.bold};;
-    margin-bottom:16px;
+    margin-bottom:1rem;
   }
 
 `
 const ValueArea = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap:12px;
+  justify-content: flex-end;
+  gap:0.75rem;
 `
 
 const ValueDiv = styled.div`
   background:#ffffff8d;
   width:31%;
-  padding:10px 0;
-
-  border-radius: 16px;
+  padding:0.625rem 0.375rem;
+  border-radius:1rem;
 
   display: flex;
   flex-direction: column;
@@ -246,19 +233,78 @@ const ValueDiv = styled.div`
     color:#000;
     font-weight:${({ theme }) => theme.fontWeight.bold};
     font-size:var(--font-size-base);
-    margin:12px 8px;
+    margin:0.5rem 0 0.25rem;
+    min-height: 2.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
   }
   p:last-of-type{
     font-size: var(--font-size-sm);
     color:var(--gray-main);
     word-break: keep-all;
+    min-height:3.2rem;
+    font-weight:${({ theme }) => theme.fontWeight.medium};
   }
 `
 
 
-  
+
 
 
 
 const Icon = styled.div`
 `
+
+
+const ScrollDown = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 65%);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.625rem;
+`;
+
+const MouseIcon = styled.div`
+  width: 1.625rem;
+  height: 2.625rem;
+  border: 0.125rem solid var(--gray-main);
+  border-radius: 0.875rem;
+
+  display: flex;
+  justify-content: center;
+  padding-top: 0.375rem;
+`;
+
+const scrollAnim = keyframes`
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  60% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateY(0.875rem);
+    opacity: 0;
+  }
+`;
+
+const Wheel = styled.div`
+  width: 0.25rem;
+  height: 0.5rem;
+  border-radius: 0.125rem;
+  background:var(--gray-main);
+  animation: ${scrollAnim} 1.6s ease-in-out infinite;
+`;
+
+const ScrollText = styled.div`
+  font-size: 0.75rem;
+  color: var(--gray-main);
+  letter-spacing: 0.05em;
+`;

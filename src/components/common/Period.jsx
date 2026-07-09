@@ -12,7 +12,7 @@ export function Period({ period }){
 
 
 const PeriodCard = styled.div`
-  color:#7b8797;
+  color:var(--gray-main);
   font-weight:${({ theme }) => theme.fontWeight.bold};
   font-size:0.85rem;
   width:16%;

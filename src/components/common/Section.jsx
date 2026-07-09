@@ -19,7 +19,8 @@ export const Section = styled.section`
         height:auto;
         padding:3.125rem 0;
       }
-
+  
+  padding:70px;
 
 `;
 
