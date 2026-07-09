@@ -313,29 +313,28 @@ const LeftPanel = styled(Card2)`
     width: 100%;
     height: 100%;
     margin: 0;
-    padding: 10px;
+    padding: 0.625rem;
     list-style: none;
   }
 
   li {
     width: 100%;
-    padding: 12px 14px;
+    padding: 0.75rem 0.875rem;
   
     cursor: pointer;
-    border-radius: 14px;
+    border-radius: 0.875rem;
     transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease, color 0.15s ease;
     
     &:hover {
       transform: translateX(4px);
       background: rgba(255, 255, 255, 0.35);
-      box-shadow: ${nmOutTiny};
+
     }
 
     &.active {
       background: rgba(255, 255, 255, 0.5);
       color: var(--blue-main);
       font-weight: 800;
-      box-shadow: ${nmOutTiny};
      
     }
   }
@@ -387,8 +386,8 @@ const ListItem = styled(Card2)`
   margin-bottom: 0.75rem;
   border-radius: 0.25rem;
   z-index: 0;
-  color:var(--gray-main);
-  font-weight:${({ theme }) => theme.fontWeight.semiBold};;
+  color: var(--gray-main);
+  font-weight: ${({ theme }) => theme.fontWeight.semiBold};
 
   &::after {
     content: "";
@@ -397,31 +396,51 @@ const ListItem = styled(Card2)`
     border-radius: inherit;
     box-shadow: ${({ theme }) => theme.neumorphism.pressed()};
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.3s ease, box-shadow 0.3s ease, transform 0.15s ease;
     z-index: -1;
   }
 
-  &:hover {
-    box-shadow: none; 
-    cursor: pointer;
-    &::after {
-      opacity: 1;
-    }
-  }
+  cursor: pointer;
 
-  ${({ $active }) => $active && `
-    box-shadow: none;
-     background:var(--blue-main);
-      color:#fff;
-    &::after {
-      opacity: 1;
+  ${({ $active }) =>
+    !$active &&
+    `
+    &:hover {
+      box-shadow: none;
+      &::after {
+        opacity: 1;
+      }
     }
   `}
-`
 
+  ${({ $active, theme }) =>
+    $active &&
+    `
+
+    background:  ${theme.gradients.blue.css};
+    color: #fff;
+    font-weight: 800;
+    transform: translateY(-1px);
+    pointer-events: auto;
+
+    &::after {
+      opacity: 0;
+    }
+
+    &:hover {
+
+      transform: translateY(-1px);
+      &::after {
+        opacity: 0;
+      }
+    }
+  `}
+`;
 const RightPanel = styled(Card2)`
   width: 60%;
   height:auto;
+  max-height:60vh;
+      overflow-y: auto;
 
   @media ${({ theme }) => theme.device.tablet} {
     width: 100%;
@@ -436,7 +455,7 @@ const RightPanel = styled(Card2)`
     font-size: var(--font-size-lg);
     text-align:left;
     font-weight: 800;
-    color: ${nm.text};
+    color:var(--blue-main);
     position: relative;
     padding-bottom: 0.875rem;
     margin: 0.375rem 0 0.875rem;
@@ -463,7 +482,7 @@ const RightPanel = styled(Card2)`
     margin: 0 0 0px;
     padding-left: 0;
     list-style: none;
-    font-size:var(--font-size-base);
+    font-size:var(--font-size-sm);
     color:var(--gray-main);
   }
 
@@ -471,7 +490,7 @@ const RightPanel = styled(Card2)`
     margin-bottom: 0.5rem;
     position: relative;
     padding-left: 1rem;
-    color: ${nm.muted};
+    color: var(--gray-main);
 
 
     &::before {

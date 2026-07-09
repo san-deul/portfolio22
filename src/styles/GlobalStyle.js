@@ -164,7 +164,9 @@ const GlobalStyle = createGlobalStyle`
     
     --gray-line:rgba(120, 135, 160, 0.18);
 
-    --blue-main:#185fa5;
+    /* --blue-main:#185fa5; */
+    --blue-main2:#4f7cff;
+    --blue-main:#185fa5;;
     --blue-sub:#d4e5f5;
     --blue-sub2:#619dc0d5;;
 

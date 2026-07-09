@@ -14,6 +14,7 @@ import { Card2 } from "./common/Card2";
 import { ButtonCircle } from "./common/Button/ButtonCircle";
 import { ChevronLeft, ChevronRight, MoveUpRight } from "lucide-react";
 import { ButtonGlassmorphism } from "./common/Button/ButtonGlassmorphism";
+import { Tag1 } from "./common/tag/tag1";
 
 
 export default function PublPrj() {
@@ -161,15 +162,12 @@ const NeumCard = styled(Card2)`
   
 `
 
-
-
-
 const ImgBox = styled.div`
   position: relative;
   width: 100%;
   height: 13.75rem;
   overflow: hidden;
-  border-radius: 16px;
+  border-radius: 1rem;
  
 
   img {
@@ -184,10 +182,8 @@ const Icon = styled(ButtonGlassmorphism)`
   position: absolute;
   bottom: 0.25rem;
   right: 0.25rem;
-
   width: 4.5rem;
   height: 4.5rem;
-
 `
 
 const IconLink = styled.a`
@@ -208,12 +204,14 @@ const Content = styled.div`
   p.name {
     font-weight: 800;
     font-size: var(--font-size-lg);
+    color:#000;
     margin-top: 0.25rem;
   }
 
   div.desc {
 
     font-size:var(--font-size-base);
+    color:var(--gray-main);
     margin: 1rem 0.8rem 1rem;
     p{
       line-height: 80%;
@@ -230,13 +228,8 @@ const TagUl = styled.ul`
   list-style: none;
 `;
 
-const TagLi = styled.li`
-  background: ${(p) => p.$bgColor};
-  padding: 0.4rem 0.6rem;
-  border-radius: 999px;
-  font-size: 12px;
-  font-weight: 800;
-  color:  ${(p) => p.$txtColor};
+const TagLi = styled(Tag1)`
+
 `;
 
 const ClosedOverlay = styled.div`
@@ -257,12 +250,13 @@ const ClosedOverlay = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 6px;
+    gap: 0.375rem;
   }
 
   span {
-    font-size: 32px;
+    font-size: 2rem;
     color: #ffffffcc;
+
   }
 
   p {

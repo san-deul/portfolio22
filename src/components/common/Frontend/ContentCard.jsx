@@ -28,7 +28,6 @@ export function ContentCard({ img, exp, stack, link, icon }) {
           {link.map((item, i) => (
             <Link key={i}>
               <a href={item.url} target="_blank" rel="noopener noreferrer">
-
                 <span>{icon[item.icon]}</span>
                 <span>{item.label}</span>
               </a>

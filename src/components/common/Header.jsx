@@ -113,7 +113,7 @@ const HeaderWrap = styled.header`
   top: 0;
   left: 0;
   width: 100%;
-  height: 70px;
+  height: 4rem;
   z-index: 999;
 
   background: ${({ $scrolled }) => ($scrolled ? "rgba(238,242,250,0.78)" : "transparent")};
@@ -148,21 +148,20 @@ const NavItem = styled.li`
     padding: 10px 14px;
     border-radius: 999px;
 
-    color: ${({ $active }) => ($active ? nm.accent :"rgba(92, 99, 114, 0.75)")};
-    background: ${({ $active }) => ($active ? "rgba(255, 255, 255, 0.35)" : "transparent")};
+    color: ${({ $active }) => ($active ? nm.accent :" var(--gray-sub)")};
+
     font-weight:600;
+    font-size:var(--font-size-base);
     outline: none;
     transition: 0.2s;
+    background:none;
     
   }
 
   button:hover {
-    color: ${nm.accent};
-    background: rgba(255, 255, 255, 0.35);
+    color: var(--blue-main);
+  
   }
 
-  button:focus-visible {
-    outline: 2px solid ${nm.accent};
-    outline-offset: 3px;
-  }
+
 `;
