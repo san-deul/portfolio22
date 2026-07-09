@@ -190,7 +190,7 @@ const ConArea = styled.div`
     flex-direction  :column ;
     align-items: flex-start;
     gap:0rem;
-    padding: 1.5rem 1.5rem;
+    padding: 1.25rem 1.25rem;
 
   }
 
@@ -232,7 +232,7 @@ const Txt1 = styled.div`
     }
   }
   @media ${({ theme }) => theme.device.mobile} {
-    font-size: 1.5rem;;
+    font-size: 1.25rem;;
     p{
       margin-top:0.2rem;
     }

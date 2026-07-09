@@ -78,6 +78,9 @@ const FooterWrap = styled.div`
     height: auto;
     padding: 1.6rem;
   }
+  @media ${({ theme }) => theme.device.mobile} {
+    padding:1rem;
+  }
 `;
 
 const FooterText = styled.p`
@@ -96,5 +99,9 @@ const FooterText = styled.p`
     font-size: 2rem;
     white-space: pre-wrap;
     color:blue;
+  }
+  @media ${({ theme }) => theme.device.mobile} {
+    font-size: 1.2rem;
+
   }
 `;

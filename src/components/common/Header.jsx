@@ -3,11 +3,11 @@ import styled, { useTheme } from "styled-components";
 import { Swiper, SwiperSlide, } from "swiper/react";
 
 const menus = [
-  { label: "Visual", id: "visual" },
+  { label: "Top", id: "visual" },
   { label: "Frontend", id: "frontend" },
   { label: "BackEnd", id: "backend" },
   { label: "Publishing", id: "publishing" },
-  { label: "About Me", id: "about" },
+  { label: "Profile", id: "about" },
 ];
 
 const nm = {
@@ -103,25 +103,20 @@ export default function Header() {
   };
 
   return (
-    /*
-    <HeaderWrap $scrolled={scrolled}>
-      <Nav>
-        {menus.map((menu) => (
-          <NavItem key={menu.id} $active={active === menu.id}>
-            <button type="button" onClick={() => handleScrollTo(menu.id)}>
-              {menu.label}
-            </button>
-          </NavItem>
-        ))}
-      </Nav>
-    </HeaderWrap>
-    */
+
     <HeaderWrap $scrolled={scrolled}>
       <Nav $isMobile={isMobile}>
         {isMobile ? (
-          <Swiper spaceBetween={5} slidesPerView={4.2}>
+          <Swiper slidesPerView={4.5} >
             {menus.map((menu) => (
-              <SwiperSlide key={menu.id} style={{ width: "auto" }}>
+              <SwiperSlide key={menu.id}
+                style={{
+                  width: "auto",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center"
+                }}
+              >
                 <NavItem $active={active === menu.id}>
                   <button type="button" onClick={() => handleScrollTo(menu.id)}>
                     {menu.label}
@@ -180,7 +175,7 @@ const Nav = styled.ul`
   gap: 22px;
 
   list-style: none;
-  @media ${({ theme }) => theme.device.mobile } {
+  @media ${({ theme }) => theme.device.mobile} {
 
     padding:0 6px;
   }
