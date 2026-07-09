@@ -80,7 +80,8 @@ export default function Visual({ theme }) {
               <LeftArea>
                 <Txt1>
                   안녕하세요. <br />
-                  사용자 경험을 중요하게 생각하는 <br />
+                  화면의 디테일과 데이터 흐름을 모두 이해하는 <br />
+
                   <p>프론트엔드 개발자,<br />
                     ooo입니다.</p>
                 </Txt1>
@@ -256,6 +257,7 @@ const RightArea = styled.div`
     color:var(--blue-main);
     font-size: var(--font-size-lg);
     font-weight:${({ theme }) => theme.fontWeight.bold};;
+    margin-top:2.5rem;
     margin-bottom:1rem;
 
   }
@@ -292,7 +294,7 @@ const ValueDiv = styled.div`
   
   p:first-of-type{
     font-size:1.0625rem;
-    color:#000;
+    //color:var(--blue-main2);
     font-weight:${({ theme }) => theme.fontWeight.bold};
     font-size:var(--font-size-base);
     margin:0.5rem 0 0.25rem;
@@ -325,13 +327,12 @@ const ValueDiv = styled.div`
   }
   
 `
-
-
-
-
-
-
 const Icon = styled.div`
+  svg{
+    width:2rem;
+    height:2rem;
+    color:var(--blue-main2);
+  }
 `
 
 

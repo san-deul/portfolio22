@@ -119,7 +119,7 @@ export default function Header() {
     <HeaderWrap $scrolled={scrolled}>
       <Nav $isMobile={isMobile}>
         {isMobile ? (
-          <Swiper spaceBetween={10} slidesPerView="auto">
+          <Swiper spaceBetween={5} slidesPerView={4.2}>
             {menus.map((menu) => (
               <SwiperSlide key={menu.id} style={{ width: "auto" }}>
                 <NavItem $active={active === menu.id}>
@@ -180,6 +180,11 @@ const Nav = styled.ul`
   gap: 22px;
 
   list-style: none;
+  @media ${({ theme }) => theme.device.mobile } {
+
+    padding:0 6px;
+  }
+
 `;
 
 const NavItem = styled.li`

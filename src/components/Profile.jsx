@@ -58,7 +58,7 @@ export default function Profile() {
                   <ProfImg $noHover></ProfImg>
                   <p>강산들</p>
                   <p>Frontend Developer</p>
-                  <p>gggg</p>
+                  <p>사용자의 경험을 넓히고, <br/>코드의 수명을 늘리는 개발자입니다.</p>
                 </ProfileTop>
                 <ProfBottom>
                   {profileData.map((item, i) => (
@@ -189,12 +189,13 @@ const ProfileTop = styled.div`
   p:nth-child(3){
     font-size:var(--font-size-base);
     color:var(--blue-main);
-    margin:0.25rem 0px 0.375rem;
+    margin:0.25rem 0px 0.55rem;
   }
   p:nth-child(4){
     font-size:var(--font-size-sm);
     color:var(--gray-main);
     font-weight:${({ theme }) => theme.fontWeight.medium};;
+    line-height: 1.2;
   }
 `
 
