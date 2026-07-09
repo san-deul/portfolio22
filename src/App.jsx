@@ -14,7 +14,7 @@ import { ThemeProvider } from "styled-components";
 import Header from "./components/common/Header";
 import Experience from "./components/Experience";
 import Education from "./components/Education";
-import TimeLineSection from "./components/TimelineSection";
+import TimeLineSection from "./components/TimeLineSection";
 
 
 function App() {
