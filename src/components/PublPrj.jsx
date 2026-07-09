@@ -14,7 +14,7 @@ import { Card2 } from "./common/Card2";
 import { ButtonCircle } from "./common/Button/ButtonCircle";
 import { ChevronLeft, ChevronRight, MoveUpRight } from "lucide-react";
 import { ButtonGlassmorphism } from "./common/Button/ButtonGlassmorphism";
-import { Tag1 } from "./common/tag/tag1";
+import { Tag1 } from "./common/tag/Tag1";
 
 
 export default function PublPrj() {
