@@ -93,8 +93,6 @@ export default function Visual({ theme }) {
                   ))}
                 </Txt2>
               </LeftArea>
-
-
               <RightArea>
                 <div> 💎 What I Value</div>
                 <ValueArea>
@@ -184,14 +182,15 @@ const ConArea = styled.div`
     flex-direction  :column ;
     align-items: flex-start;
     gap:0rem;
-    
+    padding: 1.5rem 1.5rem;
   }
 
   @media ${({ theme }) => theme.device.mobile} {
     flex-direction  :column ;
     align-items: flex-start;
     gap:0rem;
-    
+    padding: 1.5rem 1.5rem;
+
   }
 
   
@@ -206,8 +205,10 @@ font-size:var(--font-size-base);
 color:var(--gray-main);
 padding-left: 1.5rem;
 
+
 @media ${({ theme }) => theme.device.tablet} {
   width:100%;
+  padding:0;
 }
 @media ${({ theme }) => theme.device.mobile} {
   width:100%;
@@ -223,16 +224,25 @@ const Txt1 = styled.div`
     color:var(--blue-main);
     font-weight:${({ theme }) => theme.fontWeight.bold};;
   }
+
+  @media ${({ theme }) => theme.device.tablet} {
+    p{
+      margin-top:0.2rem;
+    }
+  }
+  @media ${({ theme }) => theme.device.mobile} {
+    font-size: 1.5rem;;
+    p{
+      margin-top:0.2rem;
+    }
+  }
 `
 
 const Txt2 = styled.div`
   height:auto;
   line-height: 1.6;
   white-space: pre-wrap;
-
   margin-top:1rem;
-
-  
 `
 
 const Line = styled.div`
@@ -242,11 +252,18 @@ const Line = styled.div`
 
 const RightArea = styled.div`
   width:auto;
-  >div{
+  >div:first-of-type{
     color:var(--blue-main);
     font-size: var(--font-size-lg);
     font-weight:${({ theme }) => theme.fontWeight.bold};;
     margin-bottom:1rem;
+
+  }
+  
+  @media ${({ theme }) => theme.device.tablet} {
+    >div{
+      margin-top:1rem;
+    }  
   }
 
 `
@@ -255,6 +272,9 @@ const ValueArea = styled.div`
   flex-wrap: wrap;
   justify-content: flex-end;
   gap:0.75rem;
+  @media ${({ theme }) => theme.device.tablet} {
+    justify-content: center
+  }
 `
 
 const ValueDiv = styled.div`
@@ -291,6 +311,13 @@ const ValueDiv = styled.div`
   }
   @media ${({ theme }) => theme.device.tablet} {
     width:48%;
+    p:first-of-type{
+      margin:0.25rem 0 ;
+      min-height:2rem;
+    }
+    p:last-of-type{
+      line-height:1.2rem;
+    }
   }
 
   @media ${({ theme }) => theme.device.mobile} {

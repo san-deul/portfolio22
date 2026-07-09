@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import styled from "styled-components";
+import styled, { useTheme } from "styled-components";
+import { Swiper, SwiperSlide, } from "swiper/react";
 
 const menus = [
   { label: "Visual", id: "visual" },
@@ -24,11 +25,23 @@ const nmOutTiny = `
 `;
 
 export default function Header() {
+
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState(null);
   const [hasScrolledOnce, setHasScrolledOnce] = useState(false);
 
-  
+  const theme = useTheme();
+  const tabletWidth = parseInt(theme?.size?.tablet || 768);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const onResize = () => setIsMobile(window.innerWidth <= tabletWidth);
+    onResize();
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, [tabletWidth]);
+
+
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 70);
@@ -49,7 +62,7 @@ export default function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, [hasScrolledOnce]);
 
- 
+
   useEffect(() => {
     if (!hasScrolledOnce) return;
 
@@ -81,7 +94,7 @@ export default function Header() {
     const el = document.getElementById(id);
     if (!el) return;
 
-   
+
     if (!hasScrolledOnce) setHasScrolledOnce(true);
 
     const headerH = 70;
@@ -90,6 +103,7 @@ export default function Header() {
   };
 
   return (
+    /*
     <HeaderWrap $scrolled={scrolled}>
       <Nav>
         {menus.map((menu) => (
@@ -101,6 +115,35 @@ export default function Header() {
         ))}
       </Nav>
     </HeaderWrap>
+    */
+    <HeaderWrap $scrolled={scrolled}>
+      <Nav $isMobile={isMobile}>
+        {isMobile ? (
+          <Swiper spaceBetween={10} slidesPerView="auto">
+            {menus.map((menu) => (
+              <SwiperSlide key={menu.id} style={{ width: "auto" }}>
+                <NavItem $active={active === menu.id}>
+                  <button type="button" onClick={() => handleScrollTo(menu.id)}>
+                    {menu.label}
+                  </button>
+                </NavItem>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        ) : (
+          <>
+            {menus.map((menu) => (
+              <NavItem key={menu.id} $active={active === menu.id}>
+                <button type="button" onClick={() => handleScrollTo(menu.id)}>
+                  {menu.label}
+                </button>
+              </NavItem>
+            ))}
+          </>
+        )}
+      </Nav>
+    </HeaderWrap>
+
   );
 }
 
@@ -148,7 +191,7 @@ const NavItem = styled.li`
     padding: 10px 14px;
     border-radius: 999px;
 
-    color: ${({ $active }) => ($active ? nm.accent :" var(--gray-sub)")};
+    color: ${({ $active }) => ($active ? nm.accent : " var(--gray-sub)")};
 
     font-weight:600;
     font-size:var(--font-size-base);
