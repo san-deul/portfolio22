@@ -13,6 +13,7 @@ import { Tag3 } from "./common/tag/Tag3";
 import { Tag4 } from "./common/tag/Tag4";
 import { Tag5 } from "./common/tag/Tag5";
 
+import profileImg from "../assets/img/p2.png";
 
 
 const skills = {
@@ -55,7 +56,10 @@ export default function Profile() {
             <AboutCard1>
               <ProfileCard>
                 <ProfileTop>
-                  <ProfImg $noHover></ProfImg>
+                  <ProfImg $noHover>
+                    <ProfImgInner style={{ backgroundImage: `url(${profileImg})` }} />
+                  </ProfImg>
+                  
                   <p>강산들</p>
                   <p>Frontend Developer</p>
                   <p>사용자의 경험을 넓히고, <br/>코드의 수명을 늘리는 개발자입니다.</p>
@@ -203,7 +207,19 @@ const ProfImg = styled(ButtonCircle)`
   width:6.25rem;
   height:6.25rem;
   margin:0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #E3E9F9;
 
+`
+const ProfImgInner = styled.div`
+  width: 85%;
+  height: 85%;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 `
 
 const ProfBottom = styled.div`
