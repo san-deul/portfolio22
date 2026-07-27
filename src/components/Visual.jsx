@@ -83,7 +83,7 @@ export default function Visual({ theme }) {
                   화면의 디테일과 데이터 흐름을 모두 이해하는 <br />
 
                   <p>프론트엔드 개발자,<br />
-                    ooo입니다.</p>
+                    강산들입니다.</p>
                 </Txt1>
                 <Txt2>
                   {lines.map((text, idx) => (
