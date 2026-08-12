@@ -80,7 +80,7 @@ export default function Visual({ theme }) {
               <LeftArea>
                 <Txt1>
                   안녕하세요. <br />
-                  화면의 디테일과 데이터 흐름을 모두 이해하는 <br />
+                  화면의 디테일과 <br />데이터 흐름을 모두 이해하는 <br />
 
                   <p>프론트엔드 개발자,<br />
                     `강산들`입니다.</p>
@@ -218,7 +218,7 @@ padding-left: 1.5rem;
 `;
 
 const Txt1 = styled.div`
-  font-size: 2rem;
+  font-size: 1.8rem;
   line-height: 1.2;
   color:#000;
   p{
