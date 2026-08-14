@@ -25,17 +25,18 @@ const project = [
       ""
     ],
     stack: [
-      { category: "프레임워크", value: " React, React Router, Vite" },
+      { category: "프레임워크", value: "Next.js 16" },
+      { category: "언어", value: "TypeScript" },
       { category: "상태관리", value: "Zustand" },
       { category: "데이터페칭", value: "React Query (TanStack Query)" },
       { category: "스타일링", value: "Tailwind CSS" },
       { category: "백엔드", value: "Supabase" },
-      { category: "주요 라이브러리", value: "FullCalendar, Chart.js, React Hook Form" },
+      { category: "주요 라이브러리", value: "	FullCalendar, Chart.js, React Hook Form, rc-tree, dayjs" },
       { category: "버전관리", value: "Git" }
     ],
     link: [
-      { label: "Git", url: "https://github.com/san-deul/my-hotel-app", icon: "github" },
-      { label: "바로보기", url: "https://my-hotel-app-beige.vercel.app/", icon: "link" }
+      { label: "Git", url: "https://github.com/san-deul/hotel-app-next", icon: "github" },
+      { label: "바로보기", url: "https://hotel-app-next.vercel.app/", icon: "link" }
     ],
 
   },
