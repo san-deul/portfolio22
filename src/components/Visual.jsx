@@ -82,7 +82,7 @@ export default function Visual({ theme }) {
                   안녕하세요. <br />
                   화면의 디테일과 <br />데이터 흐름을 모두 이해하는 <br />
 
-                  <p>프론트엔드 개발자,<br />
+                  <p>프론트엔드 개발자 & 퍼블리셔<br />
                     `강산들`입니다.</p>
                 </Txt1>
                 <Txt2>
